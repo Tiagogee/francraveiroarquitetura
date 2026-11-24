@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- rascunho: tirar quando a Fran aprovar -->
+<title>Fran Craveiro · Arquitetura</title>
+<meta name="description" content="Arquiteta Francielen Craveiro. Projetos residenciais e casas modulares pensados para serem sentidos, não apenas admirados.">
+<meta property="og:title" content="Fran Craveiro · Arquitetura">
+<meta property="og:description" content="Arquitetura para ser sentida, não apenas admirada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nevoa:#DCDED6;   /* concreto e névoa: a base */
+    --aco:#1C1F1C;     /* estrutura preta */
+    --freijo:#9C6A45;  /* madeira */
+    --vidro:#7E9497;   /* vidro e sombra */
+    --luz:#F0CF8E;     /* luz quente de dentro da casa */
+    --papel:#ECEDE7;
+    --display:"Italiana", serif;
+    --texto:"Hanken Grotesk", system-ui, sans-serif;
+    --cota:"IBM Plex Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--nevoa);color:var(--aco);font:400 17px/1.65 var(--texto);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--freijo);outline-offset:3px}
+  .wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+
+  /* topo */
+  .topo{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--nevoa) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgb(28 31 28 / .12)}
+  .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .marca{font-family:var(--display);font-size:24px;letter-spacing:.04em;text-decoration:none}
+  .marca small{font-family:var(--cota);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-left:10px;color:var(--vidro)}
+  .topo nav{display:flex;gap:28px;font-size:14px}
+  .topo nav a{text-decoration:none;opacity:.75}
+  .topo nav a:hover{opacity:1}
+  .topo nav .zap{opacity:1;border:1px solid var(--aco);padding:7px 16px;border-radius:40px}
+  .topo nav .zap:hover{background:var(--aco);color:var(--nevoa)}
+
+  /* abertura */
+  .abertura{padding:72px 0 0;overflow:hidden}
+  .abertura h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,8.4vw,124px);line-height:.98;letter-spacing:-.01em;max-width:11ch}
+  .abertura h1 em{font-style:normal;color:var(--freijo)}
+  .abertura .assina{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-top:28px;flex-wrap:wrap}
+  .abertura .assina p{max-width:42ch;color:#3d423d}
+  .rotulo{font-family:var(--cota);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vidro)}
+
+  /* o corte: desenho que se desenha e acende */
+  .corte{margin-top:40px;position:relative}
+  .corte svg{display:block;width:100%;height:auto}
+  .corte .l{fill:none;stroke:var(--aco);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:traco 2.6s cubic-bezier(.6,.1,.3,1) forwards}
+  .corte .fina{stroke-width:.8;stroke:#555c55}
+  .corte .madeira{stroke:var(--freijo);stroke-width:1.2}
+  .corte .cota{stroke:var(--vidro);stroke-width:.7}
+  .corte .d1{animation-delay:.2s}.corte .d2{animation-delay:.7s}.corte .d3{animation-delay:1.2s}.corte .d4{animation-delay:1.7s}
+  .corte .vao{fill:var(--luz);opacity:0;animation:acende 1.6s ease forwards 3.2s}
+  .corte .brilho{fill:url(#halo);opacity:0;animation:acende 2.4s ease forwards 3.4s}
+  .corte text{font-family:var(--cota);font-size:10px;letter-spacing:.12em;fill:var(--vidro);opacity:0;animation:acende .8s ease forwards 2.6s}
+  @keyframes traco{to{stroke-dashoffset:0}}
+  @keyframes acende{to{opacity:1}}
+
+  section{padding:120px 0}
+  .cab{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:48px;border-bottom:1px solid rgb(28 31 28 / .18);padding-bottom:16px}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,64px);line-height:1}
+
+  /* projetos */
+  .grade{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+  .proj{position:relative;background:var(--papel);border:1px solid rgb(28 31 28 / .1);overflow:hidden}
+  .proj:nth-child(1){grid-column:span 7;aspect-ratio:4/3}
+  .proj:nth-child(2){grid-column:span 5;aspect-ratio:3/4}
+  .proj:nth-child(3){grid-column:span 4;aspect-ratio:1}
+  .proj:nth-child(4){grid-column:span 8;aspect-ratio:16/9}
+  .proj img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+  .proj:hover img{transform:scale(1.03)}
+  .proj .vazio{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;
+    background:repeating-linear-gradient(90deg,transparent 0 23px,rgb(156 106 69 / .09) 23px 24px)}
+  .proj .vazio span{font-family:var(--cota);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--vidro)}
+  .proj figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;display:flex;justify-content:space-between;font-size:14px;background:linear-gradient(transparent,rgb(236 237 231 / .95) 45%)}
+
+  /* sobre */
+  .sobre{background:var(--aco);color:var(--papel)}
+  .sobre .cab{border-color:rgb(236 237 231 / .2)}
+  .sobre .rotulo{color:var(--luz)}
+  .sobre-grade{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+  .retrato{aspect-ratio:4/5;background:#2a2e2a;display:grid;place-items:center;border:1px solid rgb(236 237 231 / .12)}
+  .retrato span{font-family:var(--cota);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8c948c}
+  .sobre blockquote{font-family:var(--display);font-size:clamp(28px,3.4vw,44px);line-height:1.15;margin-bottom:32px;color:var(--luz)}
+  .sobre p{color:#c9ccc4;max-width:56ch;margin-bottom:18px}
+  .sobre .reg{font-family:var(--cota);font-size:13px;color:#8c948c;margin-top:28px}
+
+  /* serviços */
+  .servicos ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
+  .servicos li{border-top:1px solid rgb(28 31 28 / .18);padding:28px 0}
+  .servicos h3{font-family:var(--display);font-weight:400;font-size:30px;margin-bottom:6px}
+  .servicos li p{color:#4a504a;max-width:44ch}
+
+  /* como funciona: etapas reais, em ordem */
+  .etapas{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:e}
+  .etapas li{list-style:none;counter-increment:e;border-left:1px solid var(--freijo);padding:4px 0 4px 20px}
+  .etapas li::before{content:"etapa " counter(e);display:block;font-family:var(--cota);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--freijo);margin-bottom:14px}
+  .etapas h3{font-weight:500;font-size:19px;margin-bottom:8px}
+  .etapas p{font-size:15px;color:#4a504a}
+
+  /* contato */
+  .contato{padding-bottom:64px}
+  .contato h2{font-size:clamp(44px,7vw,104px);max-width:14ch;margin-bottom:40px}
+  .botoes{display:flex;gap:14px;flex-wrap:wrap}
+  .botao{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:48px;text-decoration:none;font-weight:500;border:1px solid var(--aco)}
+  .botao.cheio{background:var(--aco);color:var(--nevoa)}
+  .botao.cheio:hover{background:var(--freijo);border-color:var(--freijo)}
+  .botao:not(.cheio):hover{background:var(--papel)}
+  footer{border-top:1px solid rgb(28 31 28 / .18);margin-top:96px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--cota);font-size:12px;color:var(--vidro);letter-spacing:.06em}
+
+  /* rascunho: o que ainda falta vir da Fran */
+  .falta{background:rgb(240 207 142 / .45);border-bottom:1px dashed var(--freijo);padding:0 3px}
+  .sobre .falta{background:rgb(240 207 142 / .16);color:var(--luz)}
+
+  @media (max-width:860px){
+    .topo nav a:not(.zap){display:none}
+    section{padding:80px 0}
+    .grade{grid-template-columns:1fr}
+    .proj:nth-child(n){grid-column:auto;aspect-ratio:4/3}
+    .sobre-grade,.servicos ul{grid-template-columns:1fr;gap:40px}
+    .etapas{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:520px){.etapas{grid-template-columns:1fr}.marca small{display:none}}
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#">Fran Craveiro <small>arquitetura</small></a>
+    <nav aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a class="zap" href="#contato">Falar com a Fran</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="abertura" aria-label="Abertura">
+    <div class="wrap">
+      <h1>Arquitetura para ser <em>sentida</em>, não apenas admirada.</h1>
+      <div class="assina">
+        <p>Casas e espaços desenhados a partir de quem vai morar neles: a luz da manhã, a vista, o jeito de receber.</p>
+        <span class="rotulo">Arq. Francielen Craveiro · <span class="falta">CAU A000000-0</span></span>
+      </div>
+    </div>
+
+    <div class="corte wrap" aria-hidden="true">
+      <svg viewBox="0 0 1180 360">
+        <defs>
+          <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#F0CF8E" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#F0CF8E" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- brilho da luz de dentro -->
+        <ellipse class="brilho" cx="560" cy="230" rx="300" ry="120"/>
+        <!-- vãos de vidro que acendem -->
+        <rect class="vao" x="452" y="168" width="70" height="132"/>
+        <rect class="vao" x="526" y="168" width="70" height="132"/>
+        <rect class="vao" x="600" y="168" width="70" height="132"/>
+        <!-- terreno -->
+        <path class="l d1" pathLength="1" d="M0 300 H1180"/>
+        <path class="l fina d1" pathLength="1" d="M40 300 l6 -10 M70 300 l4 -8 M110 300 l7 -11 M150 300 l3 -7 M960 300 l6 -10 M1010 300 l4 -9 M1060 300 l7 -10 M1120 300 l3 -7"/>
+        <!-- laje de cobertura em balanço -->
+        <path class="l d2" pathLength="1" d="M330 150 H850 V162 H330 Z"/>
+        <!-- estrutura preta: pilares -->
+        <path class="l d2" pathLength="1" d="M372 162 V300 M448 162 V300 M674 162 V300 M790 162 V300"/>
+        <!-- piso elevado -->
+        <path class="l d2" pathLength="1" d="M360 300 V290 H810 V300"/>
+        <!-- caixilhos do vidro -->
+        <path class="l fina d3" pathLength="1" d="M452 168 H670 V300 M452 168 V300 M522 168 V300 M526 168 V300 M596 168 V300 M600 168 V300"/>
+        <!-- ripado de madeira -->
+        <path class="l madeira d3" pathLength="1" d="M680 170 V288 M690 170 V288 M700 170 V288 M710 170 V288 M720 170 V288 M730 170 V288 M740 170 V288 M750 170 V288 M760 170 V288 M770 170 V288 M780 170 V288"/>
+        <path class="l madeira d3" pathLength="1" d="M380 170 V288 M390 170 V288 M400 170 V288 M410 170 V288 M420 170 V288 M430 170 V288 M440 170 V288"/>
+        <!-- árvore -->
+        <path class="l fina d4" pathLength="1" d="M960 300 V200 M960 240 L935 212 M960 225 L990 196"/>
+        <path class="l fina d4" pathLength="1" d="M960 120 C905 122 890 175 925 200 C935 222 990 222 1000 200 C1035 180 1020 122 960 120 Z"/>
+        <!-- cotas -->
+        <path class="l cota d4" pathLength="1" d="M330 120 H850 M330 112 V128 M850 112 V128"/>
+        <path class="l cota d4" pathLength="1" d="M300 162 V300 M292 162 H308 M292 300 H308"/>
+        <text x="560" y="110" text-anchor="middle">CORTE AA · CASA NA MATA</text>
+        <text x="282" y="236" text-anchor="end">2,90</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="projetos" aria-labelledby="t-proj">
+    <div class="wrap">
+      <div class="cab"><h2 id="t-proj">Projetos</h2><span class="rotulo">obras e estudos</span></div>
+      <div class="grade">
+        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
+          <figcaption><span class="falta">Casa modular</span><span class="falta">cidade · ano</span></figcaption></figure>
+        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
+          <figcaption><span class="falta">Projeto 2</span><span class="falta">cidade · ano</span></figcaption></figure>
+        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
+          <figcaption><span class="falta">Projeto 3</span><span class="falta">cidade · ano</span></figcaption></figure>
+        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
+          <figcaption><span class="falta">Projeto 4</span><span class="falta">cidade · ano</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="sobre" aria-labelledby="t-sobre">
+    <div class="wrap">
+      <div class="cab"><h2 id="t-sobre">A Fran</h2><span class="rotulo">quem desenha</span></div>
+      <div class="sobre-grade">
+        <div class="retrato"><span>retrato da Fran</span></div>
+        <div>
+          <blockquote><span class="falta">Uma frase dela, nas palavras dela.</span></blockquote>
+          <p><span class="falta">Bio dela em 3 a 5 linhas: formação, há quanto tempo projeta, o que a move. Este texto é provisório.</span></p>
+          <p>Trabalha com madeira, estrutura metálica e vidro, e com a paisagem como parte do projeto. Por isso cada casa começa no terreno, não na prancheta.</p>
+          <p class="reg">Arquiteta e urbanista · <span class="falta">CAU A000000-0</span> · <span class="falta">cidade, SC</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="servicos" aria-labelledby="t-serv">
+    <div class="wrap">
+      <div class="cab"><h2 id="t-serv">O que ela faz</h2><span class="rotulo falta">lista a confirmar com a Fran</span></div>
+      <ul>
+        <li><h3>Projeto residencial</h3><p>Da primeira conversa ao projeto aprovado na prefeitura, com o detalhamento para a obra.</p></li>
+        <li><h3>Casa modular</h3><p>Casas em módulos, mais rápidas de montar, pensadas para terrenos em meio à natureza.</p></li>
+        <li><h3>Interiores</h3><p>Marcenaria, iluminação e materiais escolhidos junto com o projeto, não depois dele.</p></li>
+        <li><h3>Reforma</h3><p>Para quem já tem a casa e quer que ela funcione do jeito que a família vive hoje.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="como" aria-labelledby="t-como">
+    <div class="wrap">
+      <div class="cab"><h2 id="t-como">Como funciona</h2><span class="rotulo">do terreno à chave</span></div>
+      <ol class="etapas">
+        <li><h3>Conversa</h3><p>Você conta como vive, o que precisa e quanto quer investir.</p></li>
+        <li><h3>Visita ao terreno</h3><p>Sol, vento, vista e vizinhança entram no desenho desde o início.</p></li>
+        <li><h3>Estudo e projeto</h3><p>Primeiro o estudo, depois o projeto completo, com cada ajuste conversado.</p></li>
+        <li><h3>Obra</h3><p>Projeto detalhado para a obra e acompanhamento quando você quiser.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contato" class="contato" aria-labelledby="t-cont">
+    <div class="wrap">
+      <span class="rotulo">contato</span>
+      <h2 id="t-cont">Vamos conversar sobre a sua casa?</h2>
+      <div class="botoes">
+        <a class="botao cheio" href="https://wa.me/5548000000000" rel="noopener">Chamar no WhatsApp <span class="falta">(número)</span></a>
+        <a class="botao" href="https://www.instagram.com/francraveiroarquitetura/" rel="noopener">Instagram</a>
+        <a class="botao" href="mailto:contato@francraveiroarquitetura.com.br">contato@francraveiroarquitetura.com.br</a>
+      </div>
+      <footer>
+        <span>Francielen Craveiro · Arquiteta e Urbanista · <span class="falta">CAU A000000-0</span></span>
+        <span>francraveiroarquitetura.com.br</span>
+      </footer>
+    </div>
+  </section>
+</main>
+</body>
+</html>
