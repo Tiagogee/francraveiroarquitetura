@@ -74,6 +74,8 @@
   .abertura .botoes{display:flex;gap:12px;flex-wrap:wrap;margin:40px 0 72px}
   .portal{position:relative;aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;background:url(img/veio.webp) 0 0/auto 140% var(--salvia);animation:veio 60s linear infinite alternate}
   .portal::after{content:"";position:absolute;inset:14px 14px 0;border:1.5px solid rgb(238 229 212 / .55);border-bottom:0;border-radius:var(--arco)}
+  .portal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .portal::after{z-index:2}
   .portal .marca-arco{position:absolute;left:50%;top:56%;width:46%;translate:-50% -50%;color:var(--creme);filter:drop-shadow(0 10px 24px rgb(84 54 26 / .35))}
   @keyframes veio{to{background-position:-700px 0}}
 
@@ -111,13 +113,22 @@
   .cab{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px;flex-wrap:wrap}
   .cab p{max-width:38ch}
   .cab h2{margin-top:14px}
-  .grade{display:grid;grid-template-columns:repeat(6,1fr);gap:28px}
-  .proj{grid-column:span 2}
-  .proj:nth-child(1),.proj:nth-child(2){grid-column:span 3}
+  /* projetos em destaque: foto grande + texto, alternando o lado */
+  .destaque-proj{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center;margin-bottom:80px}
+  .destaque-proj.inv{grid-template-columns:5fr 7fr}
+  .destaque-proj.inv .foto{order:2}
+  .destaque-proj .foto{border:0;cursor:zoom-in;font:inherit;aspect-ratio:4/3;border-radius:28px 28px 28px 28px;overflow:hidden;position:relative;display:grid;place-items:center;color:var(--creme)}
+  .destaque-proj .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .destaque-proj .foto:hover img{transform:scale(1.04)}
+  .destaque-proj .foto .aviso,.proj .foto .aviso{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85;text-align:center;padding:0 20px}
+  .destaque-proj h3{font-size:clamp(40px,4.4vw,60px);line-height:1;margin:14px 0 18px}
+  .destaque-proj .txt p{max-width:42ch}
+  .links{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px}
+  .link{background:none;border:0;padding:0 0 4px;font:600 14px var(--sans);letter-spacing:.04em;color:var(--marrom);text-decoration:none;border-bottom:1.5px solid var(--ferrugem);cursor:pointer;transition:color .2s}
+  .link:hover{color:var(--ferrugem)}
+  .em-breve{margin:8px 0 28px;opacity:.7}
+  .grade{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
   .proj .foto{aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;position:relative;display:grid;place-items:center;color:var(--creme)}
-  .proj:nth-child(1) .foto,.proj:nth-child(2) .foto{aspect-ratio:1/1}
-  .proj .foto img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
-  .proj:hover .foto img{transform:scale(1.04)}
   .proj .foto .aviso{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85;text-align:center;padding:0 20px}
   .c1{background:var(--oliva)}.c2{background:var(--ferrugem)}.c3{background:var(--marrom)}.c4{background:var(--salvia);color:var(--marrom)!important}.c5{background:var(--oliva)}
   .proj h3{font-size:28px;margin-top:18px;line-height:1.1}
@@ -146,11 +157,30 @@
 
   /* como funciona: etapas em ordem real */
   .como{background:var(--salvia)}
-  .etapas{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:e}
-  .etapas li{counter-increment:e;border-top:2px solid var(--marrom);padding-top:22px}
-  .etapas li::before{content:counter(e);display:block;font-family:var(--serif);font-style:italic;font-size:56px;line-height:1;color:var(--ferrugem);margin-bottom:14px}
-  .etapas h3{font-size:24px;margin-bottom:10px}
-  .etapas p{font-size:15px;line-height:1.7}
+  .como-grade{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+  .como h2{margin:14px 0 20px}
+  .como .sub{max-width:32ch}
+  .acordeao details{border-top:1.5px solid rgb(84 54 26 / .35)}
+  .acordeao details:last-child{border-bottom:1.5px solid rgb(84 54 26 / .35)}
+  .acordeao summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:22px;padding:24px 0;font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.1}
+  .acordeao summary::-webkit-details-marker{display:none}
+  .acordeao summary b{font-weight:400;font-style:italic;color:var(--ferrugem);min-width:28px}
+  .acordeao summary::after{content:"+";margin-left:auto;font-family:var(--sans);font-weight:300;font-size:28px;transition:transform .3s}
+  .acordeao details[open] summary::after{transform:rotate(45deg)}
+  .acordeao summary:hover{color:var(--ferrugem)}
+  .acordeao p{padding:0 40px 28px 50px;font-size:16px;max-width:60ch}
+
+  /* galeria em tela cheia */
+  .galeria{position:fixed;inset:0;z-index:50;background:rgb(40 26 12 / .94);display:none;align-items:center;justify-content:center;padding:60px 70px}
+  .galeria.on{display:flex}
+  .galeria [hidden]{display:none}
+  .galeria img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
+  .galeria .vazio{color:var(--creme);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+  .galeria button{position:absolute;background:none;border:0;color:var(--creme);font:300 40px/1 var(--sans);cursor:pointer;padding:12px}
+  .galeria .fechar{top:14px;right:20px}
+  .galeria .ant{left:14px;top:50%;translate:0 -50%}
+  .galeria .prox{right:14px;top:50%;translate:0 -50%}
+  .galeria .legenda{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:var(--salvia);font-size:13px}
 
   /* contato */
   .contato{background:var(--marrom);color:var(--creme);padding-bottom:48px}
@@ -183,16 +213,18 @@
     .missao h2{position:static}
     .portal{max-width:520px}
     .abertura .botoes{margin-bottom:0}
-    .grade{grid-template-columns:1fr 1fr}
-    .proj,.proj:nth-child(n){grid-column:span 1}
-    .elementos,.etapas{grid-template-columns:1fr 1fr}
+    .destaque-proj,.destaque-proj.inv,.como-grade{grid-template-columns:1fr;gap:28px}
+    .destaque-proj.inv .foto{order:0}
+    .elementos{grid-template-columns:1fr 1fr}
     .servicos ul{grid-template-columns:1fr}
   }
   @media (max-width:640px){
     section{padding:80px 0}
     .topo nav a:not(.botao){display:none}
     .topo .marca-logo{width:120px}
-    .grade,.etapas{grid-template-columns:1fr}
+    .grade{grid-template-columns:1fr}
+    .acordeao p{padding:0 0 24px 50px}
+    .galeria{padding:56px 12px}
     .elementos{gap:16px}
     .elementos h3{font-size:24px}
     .servicos li{padding:30px 24px;grid-template-columns:1fr}
@@ -238,7 +270,7 @@
           <a class="botao b-linha" href="#projetos">Ver projetos</a>
         </div>
       </div>
-      <div class="portal" role="img" aria-label="Veio de madeira com o arco da marca Fran Craveiro"><span class="marca-arco"></span></div>
+      <div class="portal"><span class="marca-arco"></span><img src="img/projetos/vitoria-regia-frente.webp" alt="Casa Vitória Régia: pedra, madeira e deck sobre o lago ao entardecer" onerror="this.remove()"></div>
     </div>
   </section>
 
@@ -280,21 +312,49 @@
   <section id="projetos" aria-labelledby="t-proj">
     <div class="wrap">
       <div class="cab">
-        <div><span class="eyebrow">Portfólio</span><h2 id="t-proj">Projetos</h2></div>
-        <p>Uma seleção do escritório, de casas a espaços comerciais.</p>
+        <div><span class="eyebrow">Portfólio</span><h2 id="t-proj">Lugares para <em>viver</em>.</h2></div>
+        <p>Projetos pensados a partir das pessoas, da paisagem e dos sentidos.</p>
       </div>
-      <div class="grade">
-        <article class="proj rev"><div class="foto c1"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Casa de campo</h3><p>Telhado inclinado, pedra e madeira</p></article>
-        <article class="proj rev"><div class="foto c2"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Casa no condomínio</h3><p>Linhas modernas</p></article>
-        <article class="proj rev"><div class="foto c3"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Cozinha retrô</h3><p>Interiores</p></article>
-        <article class="proj rev"><div class="foto c4"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Ventos</h3><p><span class="falta">tipo de projeto</span></p></article>
-        <article class="proj rev"><div class="foto c5"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Academia do Kado</h3><p>Comercial</p></article>
-      </div>
+
+      <article class="destaque-proj rev">
+        <button class="foto c3" data-galeria="vitoria" aria-label="Ver imagens da Casa Vitória Régia"><img src="img/projetos/vitoria-regia-frente.webp" alt="Casa de pedra e madeira com deck sobre o lago de vitórias-régias ao entardecer" loading="lazy"></button>
+        <div class="txt">
+          <span class="eyebrow">Residencial</span>
+          <h3>Casa Vitória Régia</h3>
+          <p>Pedra, madeira e vidro em uma casa que se debruça sobre a água. O deck avança sobre o lago, o fogo reúne a família ao entardecer e a natureza entra pelas grandes aberturas.</p>
+          <div class="links"><button class="link" data-galeria="vitoria">Ver imagens</button></div>
+        </div>
+      </article>
+
+      <article class="destaque-proj inv rev">
+        <button class="foto c1" data-galeria="farol" aria-label="Ver imagens da Casa Farol"><img src="img/projetos/casa-farol-varanda.webp" alt="Varanda da Casa Farol com luminárias acesas, arco de pedra e cascata na piscina" loading="lazy"></button>
+        <div class="txt">
+          <span class="eyebrow">Residencial · Balneário Rincão, SC</span>
+          <h3>Casa Farol</h3>
+          <p>Uma casa de verão para reunir a família e criar memórias. A arquitetura de inspiração americana e os interiores em tons claros dão forma a um refúgio acolhedor à beira do litoral.</p>
+          <div class="links"><button class="link" data-galeria="farol">Ver imagens</button></div>
+        </div>
+      </article>
+
+      <article class="destaque-proj rev">
+        <button class="foto c4" data-galeria="interiores" aria-label="Ver imagens dos interiores da Casa Farol"><img src="img/projetos/interiores-farol-cozinha.webp" alt="Cozinha branca com armários em arco, vidro canelado e pendentes de fibra natural" loading="lazy"></button>
+        <div class="txt">
+          <span class="eyebrow">Interiores · Casa Farol</span>
+          <h3>A cozinha da Casa Farol</h3>
+          <p>Marcenaria sob medida com portas em arco e vidro canelado, luz embutida nas prateleiras, pedra na parede da churrasqueira e fibras naturais nos pendentes e nas cadeiras.</p>
+          <div class="links"><button class="link" data-galeria="interiores">Ver imagens</button></div>
+        </div>
+      </article>
+
+      <article class="destaque-proj inv rev">
+        <button class="foto c2" data-galeria="ventos" aria-label="Ver imagens do Ventos"><img src="img/projetos/ventos-fachada.webp" alt="Fachada do Ventos com madeira ondulada, arcos e listras azuis" loading="lazy"></button>
+        <div class="txt">
+          <span class="eyebrow">Comercial · Balneário Rincão, SC</span>
+          <h3>Ventos</h3>
+          <p>Madeira, palha e tons de azul trazem a paisagem do litoral para um espaço comercial pensado para encontrar os amigos e aproveitar os dias de verão.</p>
+          <div class="links"><button class="link" data-galeria="ventos">Ver imagens</button><a class="link" href="https://www.instagram.com/reel/Df5apzLunSu/" target="_blank" rel="noopener">Apresentação no Instagram</a></div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -328,13 +388,19 @@
 
   <section class="como" aria-labelledby="t-como">
     <div class="wrap">
-      <div class="cab"><div><span class="eyebrow">Como funciona</span><h2 id="t-como">Do terreno à chave</h2></div></div>
-      <ol class="etapas">
-        <li class="rev"><h3>Conversa</h3><p>Você me conta sua história, como vive, o que precisa, como quer se sentir no espaço e quanto quer investir. Eu escuto com atenção e interpreto com sensibilidade, para que tudo isso ganhe forma na arquitetura.</p></li>
-        <li class="rev"><h3>Terreno</h3><p>Gosto de caminhar pelo terreno, sentir a atmosfera do lugar e observar o sol, o vento, a paisagem, o perfil do terreno e a vizinhança. É nessa visita que começo a imaginar como a arquitetura pode se encaixar ali com naturalidade e que sensação quero despertar.</p></li>
-        <li class="rev"><h3>Estudo e projeto</h3><p>Começo pelo estudo, em que te apresento as primeiras ideias para o espaço. Conversamos sobre cada ajuste e, com as escolhas alinhadas, desenvolvo o projeto completo.</p></li>
-        <li class="rev"><h3>Obra</h3><p>Entrego o projeto com os detalhes necessários para que a obra seja bem executada. Também ofereço acompanhamento para esclarecer dúvidas da equipe e ajudar nas decisões que surgem à medida que o espaço ganha forma.</p></li>
-      </ol>
+      <div class="como-grade">
+        <div>
+          <span class="eyebrow">Como funciona</span>
+          <h2 id="t-como">Cada projeto nasce de uma <em>escuta</em>.</h2>
+          <p class="sub">Do terreno à entrega das chaves, em quatro etapas.</p>
+        </div>
+        <div class="acordeao">
+          <details open><summary><b>1</b>Conversa</summary><p>Você me conta sua história, como vive, o que precisa, como quer se sentir no espaço e quanto quer investir. Eu escuto com atenção e interpreto com sensibilidade, para que tudo isso ganhe forma na arquitetura.</p></details>
+          <details><summary><b>2</b>Terreno</summary><p>Gosto de caminhar pelo terreno, sentir a atmosfera do lugar e observar o sol, o vento, a paisagem, o perfil do terreno e a vizinhança. Tudo isso orienta as primeiras escolhas do projeto. É nessa visita que começo a imaginar como a arquitetura pode se encaixar ali com naturalidade, como o espaço vai funcionar no dia a dia e que sensação quero despertar.</p></details>
+          <details><summary><b>3</b>Estudo e projeto</summary><p>Começo pelo estudo, em que te apresento as primeiras ideias para o espaço. Conversamos sobre cada ajuste e, com as escolhas alinhadas, desenvolvo o projeto completo.</p></details>
+          <details><summary><b>4</b>Obra</summary><p>Entrego o projeto com os detalhes necessários para que a obra seja bem executada. Também ofereço acompanhamento para esclarecer dúvidas da equipe e ajudar nas decisões que surgem à medida que o espaço ganha forma.</p></details>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -366,7 +432,35 @@
 
 <a class="zap" href="https://wa.me/5548991331400?text=Ol%C3%A1%2C%20Fran!%20Vi%20seu%20site%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" aria-label="Conversar com a Fran no WhatsApp"><svg aria-hidden="true"><use href="#i-zap"/></svg></a>
 
+<div class="galeria" role="dialog" aria-modal="true" aria-label="Imagens do projeto">
+  <button class="fechar" aria-label="Fechar">×</button>
+  <button class="ant" aria-label="Imagem anterior">‹</button>
+  <img alt=""><span class="vazio">fotos em alta a caminho</span>
+  <button class="prox" aria-label="Próxima imagem">›</button>
+  <p class="legenda"></p>
+</div>
+
 <script>
+  // galeria dos projetos
+  const GAL = {
+    vitoria: [['vitoria-regia-frente.webp','Fachada e deck sobre o lago'],['vitoria-regia-lateral.webp','Vista lateral, pedra e madeira'],['vitoria-regia-noite.webp','Ao anoitecer, com o caminho iluminado']],
+    farol: [['casa-farol-fachada.webp','Fachada ao pôr do sol'],['casa-farol-varanda.webp','Varanda com arco de pedra e cascata'],['casa-farol-piscina.webp','Piscina e área de descanso']],
+    interiores: [['interiores-farol-cozinha.webp','Cozinha com pendentes de fibra natural'],['interiores-farol-ilha.webp','Ilha, mesa de madeira e estar integrados'],['interiores-farol-arcos.webp','Armários em arco com vidro canelado'],['interiores-farol-armarios.webp','Marcenaria com luz embutida']],
+    ventos: [['ventos-fachada.webp','Fachada com madeira ondulada e arcos'],['ventos-calcada.webp','O Ventos visto da calçada'],['ventos-terraco.webp','Terraço com palco e luzes de varal']]
+  };
+  const g = document.querySelector('.galeria'), gi = g.querySelector('img'), gv = g.querySelector('.vazio'), gl = g.querySelector('.legenda');
+  let lista = [], pos = 0;
+  const mostra = () => { const [f, t] = lista[pos]; gi.hidden = true; gv.hidden = true; gi.src = 'img/projetos/' + f; gi.alt = t; gl.textContent = t + '  ·  ' + (pos + 1) + ' de ' + lista.length; };
+  gi.onload = () => { gi.hidden = false; };
+  gi.onerror = () => { gi.hidden = true; gv.hidden = false; };
+  document.querySelectorAll('[data-galeria]').forEach(b => b.addEventListener('click', () => { lista = GAL[b.dataset.galeria]; pos = 0; mostra(); g.classList.add('on'); g.querySelector('.fechar').focus(); }));
+  const fecha = () => g.classList.remove('on');
+  g.querySelector('.fechar').onclick = fecha;
+  g.querySelector('.ant').onclick = () => { pos = (pos + lista.length - 1) % lista.length; mostra(); };
+  g.querySelector('.prox').onclick = () => { pos = (pos + 1) % lista.length; mostra(); };
+  g.addEventListener('click', e => { if (e.target === g) fecha(); });
+  addEventListener('keydown', e => { if (!g.classList.contains('on')) return; if (e.key === 'Escape') fecha(); if (e.key === 'ArrowRight') g.querySelector('.prox').click(); if (e.key === 'ArrowLeft') g.querySelector('.ant').click(); });
+
   // entrada suave dos blocos ao rolar
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.rev').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 90 + 'ms'; io.observe(el); });
