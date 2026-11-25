@@ -5,131 +5,147 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex"><!-- rascunho: tirar quando a Fran aprovar -->
 <title>Fran Craveiro · Arquitetura</title>
-<meta name="description" content="Arquiteta Francielen Craveiro. Projetos residenciais e casas modulares pensados para serem sentidos, não apenas admirados.">
+<meta name="description" content="Arquiteta Francielen Craveiro. Casas e interiores pensados para serem sentidos, não apenas admirados.">
 <meta property="og:title" content="Fran Craveiro · Arquitetura">
 <meta property="og:description" content="Arquitetura para ser sentida, não apenas admirada.">
+<link rel="icon" href="img/arco.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* cores tiradas da identidade visual da Fran */
   :root{
-    --nevoa:#DCDED6;   /* concreto e névoa: a base */
-    --aco:#1C1F1C;     /* estrutura preta */
-    --freijo:#9C6A45;  /* madeira */
-    --vidro:#7E9497;   /* vidro e sombra */
-    --luz:#F0CF8E;     /* luz quente de dentro da casa */
-    --papel:#ECEDE7;
-    --display:"Italiana", serif;
-    --texto:"Hanken Grotesk", system-ui, sans-serif;
-    --cota:"IBM Plex Mono", ui-monospace, monospace;
+    --creme:#EEE5D4;
+    --salvia:#C8C590;
+    --marrom:#54361A;
+    --ferrugem:#7D3F0E;
+    --oliva:#585931;
+    --serif:"Fraunces", Georgia, serif;
+    --sans:"Montserrat", system-ui, sans-serif;
+    --arco:999px 999px 0 0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--nevoa);color:var(--aco);font:400 17px/1.65 var(--texto);-webkit-font-smoothing:antialiased}
+  body{background:var(--creme);color:var(--marrom);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  :focus-visible{outline:2px solid var(--freijo);outline-offset:3px}
-  .wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+  img{display:block;max-width:100%}
+  :focus-visible{outline:3px solid var(--ferrugem);outline-offset:3px}
+  .wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;font-variation-settings:"opsz" 144}
+  h2{font-size:clamp(40px,5.6vw,76px);line-height:1;letter-spacing:-.015em}
+  section{padding:120px 0}
+
+  /* o arco da marca, pintado na cor que a seção pedir */
+  .marca-arco{display:inline-block;background:currentColor;-webkit-mask:url(img/arco.png) center/contain no-repeat;mask:url(img/arco.png) center/contain no-repeat}
+  .marca-logo{display:block;background:currentColor;-webkit-mask:url(img/logo.png) left center/contain no-repeat;mask:url(img/logo.png) left center/contain no-repeat;aspect-ratio:737/244}
 
   /* topo */
-  .topo{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--nevoa) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgb(28 31 28 / .12)}
-  .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .marca{font-family:var(--display);font-size:24px;letter-spacing:.04em;text-decoration:none}
-  .marca small{font-family:var(--cota);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-left:10px;color:var(--vidro)}
-  .topo nav{display:flex;gap:28px;font-size:14px}
-  .topo nav a{text-decoration:none;opacity:.75}
-  .topo nav a:hover{opacity:1}
-  .topo nav .zap{opacity:1;border:1px solid var(--aco);padding:7px 16px;border-radius:40px}
-  .topo nav .zap:hover{background:var(--aco);color:var(--nevoa)}
+  .topo{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--creme) 92%,transparent);backdrop-filter:blur(8px)}
+  .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .topo .marca-logo{width:150px}
+  .topo nav{display:flex;gap:30px;align-items:center;font-size:14px;font-weight:500}
+  .topo nav a{text-decoration:none}
+  .topo nav a:not(.botao):hover{color:var(--ferrugem)}
+
+  .botao{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;transition:background .25s,color .25s,transform .25s}
+  .botao:hover{transform:translateY(-2px)}
+  .b-ferrugem{background:var(--ferrugem);color:var(--creme)}
+  .b-ferrugem:hover{background:var(--marrom)}
+  .b-linha{border:1.5px solid currentColor}
+  .b-creme{background:var(--creme);color:var(--marrom)}
+  .b-creme:hover{background:var(--salvia)}
+  .topo .botao{padding:10px 20px;font-size:14px}
 
   /* abertura */
-  .abertura{padding:72px 0 0;overflow:hidden}
-  .abertura h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,8.4vw,124px);line-height:.98;letter-spacing:-.01em;max-width:11ch}
-  .abertura h1 em{font-style:normal;color:var(--freijo)}
-  .abertura .assina{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-top:28px;flex-wrap:wrap}
-  .abertura .assina p{max-width:42ch;color:#3d423d}
-  .rotulo{font-family:var(--cota);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vidro)}
+  .abertura{padding:48px 0 0}
+  .abertura .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end}
+  .abertura h1{font-size:clamp(50px,6.6vw,98px);line-height:.98;letter-spacing:-.02em;margin:22px 0 28px}
+  .abertura h1 em{font-style:italic;color:var(--ferrugem)}
+  .abertura p{max-width:40ch;font-size:18px}
+  .abertura .botoes{display:flex;gap:12px;flex-wrap:wrap;margin:36px 0 64px}
+  .portal{position:relative;aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;background:url(img/veio.webp) 0 0/auto 140% var(--salvia);animation:veio 60s linear infinite alternate}
+  .portal .marca-arco{position:absolute;left:50%;top:56%;width:46%;aspect-ratio:309/195;translate:-50% -50%;color:var(--creme);filter:drop-shadow(0 10px 24px rgb(84 54 26 / .35))}
+  @keyframes veio{to{background-position:-700px 0}}
 
-  /* o corte: desenho que se desenha e acende */
-  .corte{margin-top:40px;position:relative}
-  .corte svg{display:block;width:100%;height:auto}
-  .corte .l{fill:none;stroke:var(--aco);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:traco 2.6s cubic-bezier(.6,.1,.3,1) forwards}
-  .corte .fina{stroke-width:.8;stroke:#555c55}
-  .corte .madeira{stroke:var(--freijo);stroke-width:1.2}
-  .corte .cota{stroke:var(--vidro);stroke-width:.7}
-  .corte .d1{animation-delay:.2s}.corte .d2{animation-delay:.7s}.corte .d3{animation-delay:1.2s}.corte .d4{animation-delay:1.7s}
-  .corte .vao{fill:var(--luz);opacity:0;animation:acende 1.6s ease forwards 3.2s}
-  .corte .brilho{fill:url(#halo);opacity:0;animation:acende 2.4s ease forwards 3.4s}
-  .corte text{font-family:var(--cota);font-size:10px;letter-spacing:.12em;fill:var(--vidro);opacity:0;animation:acende .8s ease forwards 2.6s}
-  @keyframes traco{to{stroke-dashoffset:0}}
-  @keyframes acende{to{opacity:1}}
-
-  section{padding:120px 0}
-  .cab{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:48px;border-bottom:1px solid rgb(28 31 28 / .18);padding-bottom:16px}
-  h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,64px);line-height:1}
+  /* faixa de arcos */
+  .faixa{background:var(--ferrugem);color:var(--salvia);overflow:hidden;padding:26px 0}
+  .faixa .trilho{display:flex;gap:56px;width:max-content;animation:anda 40s linear infinite}
+  .faixa .item{display:flex;align-items:center;gap:56px;font-family:var(--serif);font-style:italic;font-size:26px;white-space:nowrap}
+  .faixa .marca-arco{width:52px;aspect-ratio:309/195}
+  @keyframes anda{to{transform:translateX(-50%)}}
 
   /* projetos */
-  .grade{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-  .proj{position:relative;background:var(--papel);border:1px solid rgb(28 31 28 / .1);overflow:hidden}
-  .proj:nth-child(1){grid-column:span 7;aspect-ratio:4/3}
-  .proj:nth-child(2){grid-column:span 5;aspect-ratio:3/4}
-  .proj:nth-child(3){grid-column:span 4;aspect-ratio:1}
-  .proj:nth-child(4){grid-column:span 8;aspect-ratio:16/9}
-  .proj img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
-  .proj:hover img{transform:scale(1.03)}
-  .proj .vazio{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;
-    background:repeating-linear-gradient(90deg,transparent 0 23px,rgb(156 106 69 / .09) 23px 24px)}
-  .proj .vazio span{font-family:var(--cota);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--vidro)}
-  .proj figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;display:flex;justify-content:space-between;font-size:14px;background:linear-gradient(transparent,rgb(236 237 231 / .95) 45%)}
+  .cab{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+  .cab p{max-width:38ch}
+  .grade{display:grid;grid-template-columns:repeat(6,1fr);gap:28px}
+  .proj{grid-column:span 2}
+  .proj:nth-child(1),.proj:nth-child(2){grid-column:span 3}
+  .proj .foto{aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;position:relative;display:grid;place-items:center;color:var(--creme)}
+  .proj:nth-child(1) .foto,.proj:nth-child(2) .foto{aspect-ratio:5/5}
+  .proj .foto img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+  .proj:hover .foto img{transform:scale(1.04)}
+  .proj .foto .aviso{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85;text-align:center;padding:0 20px}
+  .c1{background:var(--oliva)}.c2{background:var(--ferrugem)}.c3{background:var(--marrom)}.c4{background:var(--salvia);color:var(--marrom)!important}.c5{background:var(--oliva)}
+  .proj h3{font-size:28px;margin-top:18px;line-height:1.1}
+  .proj p{font-size:14px;margin-top:6px;opacity:.8}
 
   /* sobre */
-  .sobre{background:var(--aco);color:var(--papel)}
-  .sobre .cab{border-color:rgb(236 237 231 / .2)}
-  .sobre .rotulo{color:var(--luz)}
-  .sobre-grade{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
-  .retrato{aspect-ratio:4/5;background:#2a2e2a;display:grid;place-items:center;border:1px solid rgb(236 237 231 / .12)}
-  .retrato span{font-family:var(--cota);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8c948c}
-  .sobre blockquote{font-family:var(--display);font-size:clamp(28px,3.4vw,44px);line-height:1.15;margin-bottom:32px;color:var(--luz)}
-  .sobre p{color:#c9ccc4;max-width:56ch;margin-bottom:18px}
-  .sobre .reg{font-family:var(--cota);font-size:13px;color:#8c948c;margin-top:28px}
+  .sobre{background:var(--oliva);color:var(--creme)}
+  .sobre .wrap{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:center}
+  .retrato{aspect-ratio:4/5;border-radius:var(--arco);background:url(img/veio.webp) 30% 0/auto 160% var(--salvia);position:relative}
+  .retrato span{position:absolute;inset:auto 0 28px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--creme);text-shadow:0 1px 8px var(--marrom)}
+  .sobre h2{margin:18px 0 28px}
+  .sobre p{max-width:54ch;margin-bottom:18px;color:#efe8d8}
+  .sobre .reg{font-size:13px;letter-spacing:.08em;margin-top:28px;opacity:.85}
 
   /* serviços */
-  .servicos ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
-  .servicos li{border-top:1px solid rgb(28 31 28 / .18);padding:28px 0}
-  .servicos h3{font-family:var(--display);font-weight:400;font-size:30px;margin-bottom:6px}
-  .servicos li p{color:#4a504a;max-width:44ch}
+  .servicos ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .servicos li{background:#f6f0e4;border-radius:28px;padding:36px 28px 32px;border:1.5px solid rgb(84 54 26 / .12)}
+  .servicos li .marca-arco{width:44px;aspect-ratio:309/195;color:var(--ferrugem);margin-bottom:26px}
+  .servicos li:nth-child(2) .marca-arco{color:var(--oliva)}
+  .servicos li:nth-child(3) .marca-arco{color:var(--marrom)}
+  .servicos li:nth-child(4) .marca-arco{color:#9a9662}
+  .servicos h3{font-size:26px;line-height:1.1;margin-bottom:10px}
+  .servicos li p{font-size:15px}
 
-  /* como funciona: etapas reais, em ordem */
-  .etapas{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:e}
-  .etapas li{list-style:none;counter-increment:e;border-left:1px solid var(--freijo);padding:4px 0 4px 20px}
-  .etapas li::before{content:"etapa " counter(e);display:block;font-family:var(--cota);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--freijo);margin-bottom:14px}
-  .etapas h3{font-weight:500;font-size:19px;margin-bottom:8px}
-  .etapas p{font-size:15px;color:#4a504a}
+  /* como funciona: etapas em ordem real */
+  .como{background:var(--salvia)}
+  .etapas{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:e}
+  .etapas li{counter-increment:e;border-top:2px solid var(--marrom);padding-top:22px}
+  .etapas li::before{content:counter(e);display:block;font-family:var(--serif);font-style:italic;font-size:56px;line-height:1;color:var(--ferrugem);margin-bottom:14px}
+  .etapas h3{font-size:24px;margin-bottom:8px}
+  .etapas p{font-size:15px}
 
   /* contato */
-  .contato{padding-bottom:64px}
-  .contato h2{font-size:clamp(44px,7vw,104px);max-width:14ch;margin-bottom:40px}
-  .botoes{display:flex;gap:14px;flex-wrap:wrap}
-  .botao{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:48px;text-decoration:none;font-weight:500;border:1px solid var(--aco)}
-  .botao.cheio{background:var(--aco);color:var(--nevoa)}
-  .botao.cheio:hover{background:var(--freijo);border-color:var(--freijo)}
-  .botao:not(.cheio):hover{background:var(--papel)}
-  footer{border-top:1px solid rgb(28 31 28 / .18);margin-top:96px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--cota);font-size:12px;color:var(--vidro);letter-spacing:.06em}
+  .contato{background:var(--marrom);color:var(--creme);padding-bottom:48px}
+  .contato h2{font-size:clamp(44px,7vw,104px);max-width:13ch;margin:20px 0 44px}
+  .contato h2 em{color:var(--salvia)}
+  .contato .botoes{display:flex;gap:12px;flex-wrap:wrap}
+  .contato .b-linha:hover{background:rgb(238 229 212 / .1)}
+  footer{margin-top:110px;padding-top:28px;border-top:1px solid rgb(238 229 212 / .2);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.9}
+  footer .marca-logo{width:190px;color:var(--creme)}
 
   /* rascunho: o que ainda falta vir da Fran */
-  .falta{background:rgb(240 207 142 / .45);border-bottom:1px dashed var(--freijo);padding:0 3px}
-  .sobre .falta{background:rgb(240 207 142 / .16);color:var(--luz)}
+  .falta{background:rgb(200 197 144 / .55);border-bottom:2px dashed var(--ferrugem);padding:0 4px}
+  .sobre .falta,.contato .falta{background:rgb(238 229 212 / .18);border-color:var(--salvia)}
 
-  @media (max-width:860px){
-    .topo nav a:not(.zap){display:none}
-    section{padding:80px 0}
-    .grade{grid-template-columns:1fr}
-    .proj:nth-child(n){grid-column:auto;aspect-ratio:4/3}
-    .sobre-grade,.servicos ul{grid-template-columns:1fr;gap:40px}
-    .etapas{grid-template-columns:1fr 1fr}
+  @media (max-width:960px){
+    .abertura .wrap,.sobre .wrap{grid-template-columns:1fr;gap:40px}
+    .portal{max-width:520px}
+    .abertura .botoes{margin-bottom:0}
+    .grade{grid-template-columns:1fr 1fr}
+    .proj,.proj:nth-child(n){grid-column:span 1}
+    .servicos ul,.etapas{grid-template-columns:1fr 1fr}
   }
-  @media (max-width:520px){.etapas{grid-template-columns:1fr}.marca small{display:none}}
+  @media (max-width:640px){
+    section{padding:80px 0}
+    .topo nav a:not(.botao){display:none}
+    .topo .marca-logo{width:120px}
+    .grade,.servicos ul,.etapas{grid-template-columns:1fr}
+  }
   @media (prefers-reduced-motion:reduce){
-    *{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}
+    *{animation:none!important;transition:none!important}
     html{scroll-behavior:auto}
   }
 </style>
@@ -138,12 +154,12 @@
 
 <header class="topo">
   <div class="wrap">
-    <a class="marca" href="#">Fran Craveiro <small>arquitetura</small></a>
+    <a href="#" aria-label="Fran Craveiro Arquitetura, início"><span class="marca-logo"></span></a>
     <nav aria-label="Seções">
       <a href="#projetos">Projetos</a>
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
-      <a class="zap" href="#contato">Falar com a Fran</a>
+      <a class="botao b-ferrugem" href="#contato">Falar com a Fran</a>
     </nav>
   </div>
 </header>
@@ -151,99 +167,78 @@
 <main>
   <section class="abertura" aria-label="Abertura">
     <div class="wrap">
-      <h1>Arquitetura para ser <em>sentida</em>, não apenas admirada.</h1>
-      <div class="assina">
-        <p>Casas e espaços desenhados a partir de quem vai morar neles: a luz da manhã, a vista, o jeito de receber.</p>
-        <span class="rotulo">Arq. Francielen Craveiro · <span class="falta">CAU A000000-0</span></span>
+      <div>
+        <span class="eyebrow">Arquiteta Francielen Craveiro</span>
+        <h1>Arquitetura para ser <em>sentida</em>, não apenas admirada.</h1>
+        <p>Casas de campo, casas de condomínio e interiores com madeira, pedra e luz quente. Cada projeto começa pelo jeito de viver de quem vai morar nele.</p>
+        <div class="botoes">
+          <a class="botao b-ferrugem" href="#contato">Quero conversar sobre a minha casa</a>
+          <a class="botao b-linha" href="#projetos">Ver projetos</a>
+        </div>
       </div>
-    </div>
-
-    <div class="corte wrap" aria-hidden="true">
-      <svg viewBox="0 0 1180 360">
-        <defs>
-          <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-            <stop offset="0" stop-color="#F0CF8E" stop-opacity=".55"/>
-            <stop offset="1" stop-color="#F0CF8E" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <!-- brilho da luz de dentro -->
-        <ellipse class="brilho" cx="560" cy="230" rx="300" ry="120"/>
-        <!-- vãos de vidro que acendem -->
-        <rect class="vao" x="452" y="168" width="70" height="132"/>
-        <rect class="vao" x="526" y="168" width="70" height="132"/>
-        <rect class="vao" x="600" y="168" width="70" height="132"/>
-        <!-- terreno -->
-        <path class="l d1" pathLength="1" d="M0 300 H1180"/>
-        <path class="l fina d1" pathLength="1" d="M40 300 l6 -10 M70 300 l4 -8 M110 300 l7 -11 M150 300 l3 -7 M960 300 l6 -10 M1010 300 l4 -9 M1060 300 l7 -10 M1120 300 l3 -7"/>
-        <!-- laje de cobertura em balanço -->
-        <path class="l d2" pathLength="1" d="M330 150 H850 V162 H330 Z"/>
-        <!-- estrutura preta: pilares -->
-        <path class="l d2" pathLength="1" d="M372 162 V300 M448 162 V300 M674 162 V300 M790 162 V300"/>
-        <!-- piso elevado -->
-        <path class="l d2" pathLength="1" d="M360 300 V290 H810 V300"/>
-        <!-- caixilhos do vidro -->
-        <path class="l fina d3" pathLength="1" d="M452 168 H670 V300 M452 168 V300 M522 168 V300 M526 168 V300 M596 168 V300 M600 168 V300"/>
-        <!-- ripado de madeira -->
-        <path class="l madeira d3" pathLength="1" d="M680 170 V288 M690 170 V288 M700 170 V288 M710 170 V288 M720 170 V288 M730 170 V288 M740 170 V288 M750 170 V288 M760 170 V288 M770 170 V288 M780 170 V288"/>
-        <path class="l madeira d3" pathLength="1" d="M380 170 V288 M390 170 V288 M400 170 V288 M410 170 V288 M420 170 V288 M430 170 V288 M440 170 V288"/>
-        <!-- árvore -->
-        <path class="l fina d4" pathLength="1" d="M960 300 V200 M960 240 L935 212 M960 225 L990 196"/>
-        <path class="l fina d4" pathLength="1" d="M960 120 C905 122 890 175 925 200 C935 222 990 222 1000 200 C1035 180 1020 122 960 120 Z"/>
-        <!-- cotas -->
-        <path class="l cota d4" pathLength="1" d="M330 120 H850 M330 112 V128 M850 112 V128"/>
-        <path class="l cota d4" pathLength="1" d="M300 162 V300 M292 162 H308 M292 300 H308"/>
-        <text x="560" y="110" text-anchor="middle">CORTE AA · CASA NA MATA</text>
-        <text x="282" y="236" text-anchor="end">2,90</text>
-      </svg>
+      <div class="portal" role="img" aria-label="Veio de madeira com o arco da marca Fran Craveiro"><span class="marca-arco"></span></div>
     </div>
   </section>
 
+  <div class="faixa" aria-hidden="true">
+    <div class="trilho">
+      <div class="item"><span class="marca-arco"></span>casas de campo<span class="marca-arco"></span>arquitetura em meio à natureza<span class="marca-arco"></span>interiores<span class="marca-arco"></span>madeira, pedra e luz</div>
+      <div class="item"><span class="marca-arco"></span>casas de campo<span class="marca-arco"></span>arquitetura em meio à natureza<span class="marca-arco"></span>interiores<span class="marca-arco"></span>madeira, pedra e luz</div>
+    </div>
+  </div>
+
   <section id="projetos" aria-labelledby="t-proj">
     <div class="wrap">
-      <div class="cab"><h2 id="t-proj">Projetos</h2><span class="rotulo">obras e estudos</span></div>
+      <div class="cab">
+        <div><span class="eyebrow">Portfólio</span><h2 id="t-proj">Projetos</h2></div>
+        <p>Uma seleção do escritório. As fotos entram assim que a Fran separar as versões em alta.</p>
+      </div>
       <div class="grade">
-        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
-          <figcaption><span class="falta">Casa modular</span><span class="falta">cidade · ano</span></figcaption></figure>
-        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
-          <figcaption><span class="falta">Projeto 2</span><span class="falta">cidade · ano</span></figcaption></figure>
-        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
-          <figcaption><span class="falta">Projeto 3</span><span class="falta">cidade · ano</span></figcaption></figure>
-        <figure class="proj"><div class="vazio"><span>foto do projeto<br>vem da Fran</span></div>
-          <figcaption><span class="falta">Projeto 4</span><span class="falta">cidade · ano</span></figcaption></figure>
+        <article class="proj"><div class="foto c1"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Casa de campo</h3><p>Telhado inclinado, pedra e madeira · <span class="falta">cidade · ano</span></p></article>
+        <article class="proj"><div class="foto c2"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Casa no condomínio</h3><p>Linhas modernas · <span class="falta">cidade · ano</span></p></article>
+        <article class="proj"><div class="foto c3"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Cozinha retrô</h3><p>Interiores · <span class="falta">cidade · ano</span></p></article>
+        <article class="proj"><div class="foto c4"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Ventos</h3><p><span class="falta">tipo de projeto · cidade · ano</span></p></article>
+        <article class="proj"><div class="foto c5"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Academia do Kado</h3><p>Comercial · <span class="falta">cidade · ano</span></p></article>
       </div>
     </div>
   </section>
 
   <section id="sobre" class="sobre" aria-labelledby="t-sobre">
     <div class="wrap">
-      <div class="cab"><h2 id="t-sobre">A Fran</h2><span class="rotulo">quem desenha</span></div>
-      <div class="sobre-grade">
-        <div class="retrato"><span>retrato da Fran</span></div>
-        <div>
-          <blockquote><span class="falta">Uma frase dela, nas palavras dela.</span></blockquote>
-          <p><span class="falta">Bio dela em 3 a 5 linhas: formação, há quanto tempo projeta, o que a move. Este texto é provisório.</span></p>
-          <p>Trabalha com madeira, estrutura metálica e vidro, e com a paisagem como parte do projeto. Por isso cada casa começa no terreno, não na prancheta.</p>
-          <p class="reg">Arquiteta e urbanista · <span class="falta">CAU A000000-0</span> · <span class="falta">cidade, SC</span></p>
-        </div>
+      <div class="retrato"><span>retrato da Fran</span></div>
+      <div>
+        <span class="eyebrow">Quem desenha</span>
+        <h2 id="t-sobre">Prazer, Fran.</h2>
+        <p><span class="falta">Bio dela em 3 a 5 linhas: formação, há quanto tempo projeta, o que a move. Este texto é provisório.</span></p>
+        <p>Ela trabalha com madeira, pedra, vidro e muita vegetação, e trata a paisagem como parte do projeto. Por isso cada casa começa no terreno, não na prancheta.</p>
+        <p class="reg">Arquiteta e urbanista · <span class="falta">CAU A000000-0</span> · <span class="falta">cidade, SC</span></p>
       </div>
     </div>
   </section>
 
   <section id="servicos" class="servicos" aria-labelledby="t-serv">
     <div class="wrap">
-      <div class="cab"><h2 id="t-serv">O que ela faz</h2><span class="rotulo falta">lista a confirmar com a Fran</span></div>
+      <div class="cab">
+        <div><span class="eyebrow">O que ela faz</span><h2 id="t-serv">Serviços</h2></div>
+        <p class="falta">Lista a confirmar com a Fran.</p>
+      </div>
       <ul>
-        <li><h3>Projeto residencial</h3><p>Da primeira conversa ao projeto aprovado na prefeitura, com o detalhamento para a obra.</p></li>
-        <li><h3>Casa modular</h3><p>Casas em módulos, mais rápidas de montar, pensadas para terrenos em meio à natureza.</p></li>
-        <li><h3>Interiores</h3><p>Marcenaria, iluminação e materiais escolhidos junto com o projeto, não depois dele.</p></li>
-        <li><h3>Reforma</h3><p>Para quem já tem a casa e quer que ela funcione do jeito que a família vive hoje.</p></li>
+        <li><span class="marca-arco"></span><h3>Casa de campo</h3><p>Casas em meio à natureza, com materiais naturais e grandes aberturas para a vista.</p></li>
+        <li><span class="marca-arco"></span><h3>Projeto residencial</h3><p>Da primeira conversa ao projeto aprovado na prefeitura, com o detalhamento para a obra.</p></li>
+        <li><span class="marca-arco"></span><h3>Interiores</h3><p>Marcenaria, iluminação e materiais escolhidos junto com o projeto, não depois dele.</p></li>
+        <li><span class="marca-arco"></span><h3>Comercial</h3><p>Lojas, academias e escritórios com a cara de quem atende neles.</p></li>
       </ul>
     </div>
   </section>
 
   <section class="como" aria-labelledby="t-como">
     <div class="wrap">
-      <div class="cab"><h2 id="t-como">Como funciona</h2><span class="rotulo">do terreno à chave</span></div>
+      <div class="cab"><div><span class="eyebrow">Do terreno à chave</span><h2 id="t-como">Como funciona</h2></div></div>
       <ol class="etapas">
         <li><h3>Conversa</h3><p>Você conta como vive, o que precisa e quanto quer investir.</p></li>
         <li><h3>Visita ao terreno</h3><p>Sol, vento, vista e vizinhança entram no desenho desde o início.</p></li>
@@ -255,16 +250,16 @@
 
   <section id="contato" class="contato" aria-labelledby="t-cont">
     <div class="wrap">
-      <span class="rotulo">contato</span>
-      <h2 id="t-cont">Vamos conversar sobre a sua casa?</h2>
+      <span class="eyebrow">Contato</span>
+      <h2 id="t-cont">Vamos desenhar a sua <em>casa</em>?</h2>
       <div class="botoes">
-        <a class="botao cheio" href="https://wa.me/5548000000000" rel="noopener">Chamar no WhatsApp <span class="falta">(número)</span></a>
-        <a class="botao" href="https://www.instagram.com/francraveiroarquitetura/" rel="noopener">Instagram</a>
-        <a class="botao" href="mailto:contato@francraveiroarquitetura.com.br">contato@francraveiroarquitetura.com.br</a>
+        <a class="botao b-creme" href="https://wa.me/5548000000000" rel="noopener">Chamar no WhatsApp <span class="falta">(número)</span></a>
+        <a class="botao b-linha" href="https://www.instagram.com/francraveiroarquitetura/" rel="noopener">@francraveiroarquitetura</a>
+        <a class="botao b-linha" href="mailto:contato@francraveiroarquitetura.com.br">contato@francraveiroarquitetura.com.br</a>
       </div>
       <footer>
+        <span class="marca-logo" role="img" aria-label="Fran Craveiro Arquitetura"></span>
         <span>Francielen Craveiro · Arquiteta e Urbanista · <span class="falta">CAU A000000-0</span></span>
-        <span>francraveiroarquitetura.com.br</span>
       </footer>
     </div>
   </section>
