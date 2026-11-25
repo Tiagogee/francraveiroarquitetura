@@ -118,7 +118,10 @@
   .destaque-proj.inv{grid-template-columns:5fr 7fr}
   .destaque-proj.inv .foto{order:2}
   .destaque-proj .foto{border:0;cursor:zoom-in;font:inherit;aspect-ratio:4/3;border-radius:28px 28px 28px 28px;overflow:hidden;position:relative;display:grid;place-items:center;color:var(--creme)}
-  .destaque-proj .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .destaque-proj.vert{grid-template-columns:5fr 7fr}
+  .destaque-proj.vert.inv{grid-template-columns:7fr 5fr}
+  .destaque-proj.vert .foto{aspect-ratio:4/5}
+  .destaque-proj .foto video,.destaque-proj .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
   .destaque-proj .foto:hover img{transform:scale(1.04)}
   .destaque-proj .foto .aviso,.proj .foto .aviso{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85;text-align:center;padding:0 20px}
   .destaque-proj h3{font-size:clamp(40px,4.4vw,60px);line-height:1;margin:14px 0 18px}
@@ -174,6 +177,7 @@
   .galeria{position:fixed;inset:0;z-index:50;background:rgb(40 26 12 / .94);display:none;align-items:center;justify-content:center;padding:60px 70px}
   .galeria.on{display:flex}
   .galeria [hidden]{display:none}
+  .galeria video{max-width:100%;max-height:100%;border-radius:12px}
   .galeria img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
   .galeria .vazio{color:var(--creme);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
   .galeria button{position:absolute;background:none;border:0;color:var(--creme);font:300 40px/1 var(--sans);cursor:pointer;padding:12px}
@@ -213,7 +217,7 @@
     .missao h2{position:static}
     .portal{max-width:520px}
     .abertura .botoes{margin-bottom:0}
-    .destaque-proj,.destaque-proj.inv,.como-grade{grid-template-columns:1fr;gap:28px}
+    .destaque-proj,.destaque-proj.inv,.destaque-proj.vert,.destaque-proj.vert.inv,.como-grade{grid-template-columns:1fr;gap:28px}
     .destaque-proj.inv .foto{order:0}
     .elementos{grid-template-columns:1fr 1fr}
     .servicos ul{grid-template-columns:1fr}
@@ -317,7 +321,7 @@
       </div>
 
       <article class="destaque-proj rev">
-        <button class="foto c3" data-galeria="vitoria" aria-label="Ver imagens da Casa Vitória Régia"><img src="img/projetos/vitoria-regia-frente.webp" alt="Casa de pedra e madeira com deck sobre o lago de vitórias-régias ao entardecer" loading="lazy"></button>
+        <button class="foto c3" data-galeria="vitoria" aria-label="Ver imagens: Casa Vitória Régia"><img src="img/projetos/vitoria-regia-frente.webp" alt="Casa de pedra e madeira com deck sobre o lago de vitórias-régias ao entardecer" loading="lazy"></button>
         <div class="txt">
           <span class="eyebrow">Residencial</span>
           <h3>Casa Vitória Régia</h3>
@@ -326,8 +330,28 @@
         </div>
       </article>
 
+      <article class="destaque-proj inv vert rev">
+        <button class="foto c1" data-galeria="modular" aria-label="Ver imagens: Casa Modular"><video src="img/projetos/modular-video.mp4" poster="img/projetos/modular-video.jpg" muted loop playsinline preload="none" aria-label="Casa modular de madeira e estrutura preta sobre o lago"></video></button>
+        <div class="txt">
+          <span class="eyebrow">Residencial · Arquitetura modular</span>
+          <h3>Casa Modular</h3>
+          <p>Módulos de madeira e estrutura preta pousados sobre a água, no meio da mata. Grandes panos de vidro trazem a paisagem para dentro, e a luz quente acolhe ao anoitecer.</p>
+          <div class="links"><button class="link" data-galeria="modular">Ver imagens</button></div>
+        </div>
+      </article>
+
+      <article class="destaque-proj vert rev">
+        <button class="foto c2" data-galeria="origem" aria-label="Ver imagens: Casa Origem"><video src="img/projetos/origem-piscina.mp4" poster="img/projetos/origem-piscina.jpg" muted loop playsinline preload="none" aria-label="Casa Origem: piscina, deck de pedra e varandas de madeira"></video></button>
+        <div class="txt">
+          <span class="eyebrow">Residencial</span>
+          <h3>Casa Origem</h3>
+          <p>Madeira, pedra e plantas em volta da piscina. Uma casa pensada para desacelerar, aberta para o jardim e para a luz do fim de tarde.</p>
+          <div class="links"><button class="link" data-galeria="origem">Ver imagens</button></div>
+        </div>
+      </article>
+
       <article class="destaque-proj inv rev">
-        <button class="foto c1" data-galeria="farol" aria-label="Ver imagens da Casa Farol"><img src="img/projetos/casa-farol-varanda.webp" alt="Varanda da Casa Farol com luminárias acesas, arco de pedra e cascata na piscina" loading="lazy"></button>
+        <button class="foto c1" data-galeria="farol" aria-label="Ver imagens: Casa Farol"><img src="img/projetos/casa-farol-varanda.webp" alt="Varanda da Casa Farol com luminárias acesas, arco de pedra e cascata na piscina" loading="lazy"></button>
         <div class="txt">
           <span class="eyebrow">Residencial · Balneário Rincão, SC</span>
           <h3>Casa Farol</h3>
@@ -337,7 +361,7 @@
       </article>
 
       <article class="destaque-proj rev">
-        <button class="foto c4" data-galeria="interiores" aria-label="Ver imagens dos interiores da Casa Farol"><img src="img/projetos/interiores-farol-cozinha.webp" alt="Cozinha branca com armários em arco, vidro canelado e pendentes de fibra natural" loading="lazy"></button>
+        <button class="foto c4" data-galeria="interiores" aria-label="Ver imagens: A cozinha da Casa Farol"><img src="img/projetos/interiores-farol-cozinha.webp" alt="Cozinha branca com armários em arco, vidro canelado e pendentes de fibra natural" loading="lazy"></button>
         <div class="txt">
           <span class="eyebrow">Interiores · Casa Farol</span>
           <h3>A cozinha da Casa Farol</h3>
@@ -347,12 +371,32 @@
       </article>
 
       <article class="destaque-proj inv rev">
-        <button class="foto c2" data-galeria="ventos" aria-label="Ver imagens do Ventos"><img src="img/projetos/ventos-fachada.webp" alt="Fachada do Ventos com madeira ondulada, arcos e listras azuis" loading="lazy"></button>
+        <button class="foto c2" data-galeria="essencia" aria-label="Ver imagens: Casa Essência"><img src="img/projetos/essencia-lareira.webp" alt="Sala em terracota com lareira, vitral colorido e cobogós" loading="lazy"></button>
+        <div class="txt">
+          <span class="eyebrow">Interiores · Casa Essência</span>
+          <h3>Casa Essência</h3>
+          <p>Terracota, verde-oliva e vitrais coloridos. Cobogós, marcenaria em tons de terra e a lareira criam uma casa quente, cheia de cor e de história.</p>
+          <div class="links"><button class="link" data-galeria="essencia">Ver imagens</button></div>
+        </div>
+      </article>
+
+      <article class="destaque-proj rev">
+        <button class="foto c2" data-galeria="ventos" aria-label="Ver imagens: Ventos"><img src="img/projetos/ventos-fachada.webp" alt="Fachada do Ventos com madeira ondulada, arcos e listras azuis" loading="lazy"></button>
         <div class="txt">
           <span class="eyebrow">Comercial · Balneário Rincão, SC</span>
           <h3>Ventos</h3>
           <p>Madeira, palha e tons de azul trazem a paisagem do litoral para um espaço comercial pensado para encontrar os amigos e aproveitar os dias de verão.</p>
           <div class="links"><button class="link" data-galeria="ventos">Ver imagens</button><a class="link" href="https://www.instagram.com/reel/Df5apzLunSu/" target="_blank" rel="noopener">Apresentação no Instagram</a></div>
+        </div>
+      </article>
+
+      <article class="destaque-proj inv rev">
+        <button class="foto c3" data-galeria="kado" aria-label="Ver imagens: Academia Kado"><img src="img/projetos/kado-fachada.webp" alt="Fachada da Academia Kado em tijolo, com arcos iluminados e jardim" loading="lazy"></button>
+        <div class="txt">
+          <span class="eyebrow">Comercial · Academia</span>
+          <h3>Academia Kado</h3>
+          <p>Tijolo, arcos iluminados e muito verde na fachada de uma academia que quer ser lugar de encontro, não só de treino.</p>
+          <div class="links"><button class="link" data-galeria="kado">Ver imagens</button></div>
         </div>
       </article>
     </div>
@@ -435,7 +479,7 @@
 <div class="galeria" role="dialog" aria-modal="true" aria-label="Imagens do projeto">
   <button class="fechar" aria-label="Fechar">×</button>
   <button class="ant" aria-label="Imagem anterior">‹</button>
-  <img alt=""><span class="vazio">fotos em alta a caminho</span>
+  <img alt=""><video muted loop playsinline controls hidden></video><span class="vazio">fotos em alta a caminho</span>
   <button class="prox" aria-label="Próxima imagem">›</button>
   <p class="legenda"></p>
 </div>
@@ -444,22 +488,32 @@
   // galeria dos projetos
   const GAL = {
     vitoria: [['vitoria-regia-frente.webp','Fachada e deck sobre o lago'],['vitoria-regia-lateral.webp','Vista lateral, pedra e madeira'],['vitoria-regia-noite.webp','Ao anoitecer, com o caminho iluminado']],
+    modular: [['modular-agua.webp','Os módulos sobre o lago'],['modular-mata.webp','A casa no meio da mata'],['modular-lateral.webp','Vista lateral'],['modular-estar.webp','Estar com pé-direito alto e vidro'],['modular-cozinha.webp','Cozinha em madeira e preto'],['modular-quarto.webp','Quarto aberto para a mata'],['modular-video.mp4','A casa em movimento']],
+    origem: [['origem-fachada.mp4','Fachada ao pôr do sol'],['origem-piscina.mp4','Piscina e varandas'],['origem-varanda.mp4','Varanda de jantar'],['origem-estar.webp','Estar integrado ao jardim'],['origem-reel.mp4','Apresentação da Casa Origem']],
     farol: [['casa-farol-fachada.webp','Fachada ao pôr do sol'],['casa-farol-varanda.webp','Varanda com arco de pedra e cascata'],['casa-farol-piscina.webp','Piscina e área de descanso']],
     interiores: [['interiores-farol-cozinha.webp','Cozinha com pendentes de fibra natural'],['interiores-farol-ilha.webp','Ilha, mesa de madeira e estar integrados'],['interiores-farol-arcos.webp','Armários em arco com vidro canelado'],['interiores-farol-armarios.webp','Marcenaria com luz embutida']],
-    ventos: [['ventos-fachada.webp','Fachada com madeira ondulada e arcos'],['ventos-calcada.webp','O Ventos visto da calçada'],['ventos-terraco.webp','Terraço com palco e luzes de varal']]
+    essencia: [['essencia-lareira.webp','Sala com lareira e vitral'],['essencia-cobogo.webp','Cobogós e estante'],['essencia-aparador.webp','Aparador terracota e vitral'],['essencia-cozinha.webp','Cozinha em verde-oliva'],['essencia-ilha.webp','Ilha e banquetas']],
+    ventos: [['ventos-fachada.webp','Fachada com madeira ondulada e arcos'],['ventos-calcada.webp','O Ventos visto da calçada'],['ventos-terraco.webp','Terraço com palco e luzes de varal']],
+    kado: [['kado-fachada.webp','Fachada iluminada à noite'],['kado-noite.webp','Entrada com arcos e jardim'],['kado-entrada.webp','Fachada em tijolo e o logo Kado'],['kado-galpao.webp','Estrutura metálica e jardim vertical']]
   };
-  const g = document.querySelector('.galeria'), gi = g.querySelector('img'), gv = g.querySelector('.vazio'), gl = g.querySelector('.legenda');
+  const g = document.querySelector('.galeria'), gi = g.querySelector('img'), gvid = g.querySelector('video'), gv = g.querySelector('.vazio'), gl = g.querySelector('.legenda');
   let lista = [], pos = 0;
-  const mostra = () => { const [f, t] = lista[pos]; gi.hidden = true; gv.hidden = true; gi.src = 'img/projetos/' + f; gi.alt = t; gl.textContent = t + '  ·  ' + (pos + 1) + ' de ' + lista.length; };
+  const mostra = () => { const [f, t] = lista[pos]; gi.hidden = true; gv.hidden = true; gvid.pause(); gvid.hidden = true;
+    if (f.endsWith('.mp4')) { gvid.src = 'img/projetos/' + f; gvid.hidden = false; gvid.play().catch(() => {}); } else { gi.src = 'img/projetos/' + f; gi.alt = t; }
+    gl.textContent = t + '  ·  ' + (pos + 1) + ' de ' + lista.length; };
   gi.onload = () => { gi.hidden = false; };
   gi.onerror = () => { gi.hidden = true; gv.hidden = false; };
   document.querySelectorAll('[data-galeria]').forEach(b => b.addEventListener('click', () => { lista = GAL[b.dataset.galeria]; pos = 0; mostra(); g.classList.add('on'); g.querySelector('.fechar').focus(); }));
-  const fecha = () => g.classList.remove('on');
+  const fecha = () => { g.classList.remove('on'); gvid.pause(); };
   g.querySelector('.fechar').onclick = fecha;
   g.querySelector('.ant').onclick = () => { pos = (pos + lista.length - 1) % lista.length; mostra(); };
   g.querySelector('.prox').onclick = () => { pos = (pos + 1) % lista.length; mostra(); };
   g.addEventListener('click', e => { if (e.target === g) fecha(); });
   addEventListener('keydown', e => { if (!g.classList.contains('on')) return; if (e.key === 'Escape') fecha(); if (e.key === 'ArrowRight') g.querySelector('.prox').click(); if (e.key === 'ArrowLeft') g.querySelector('.ant').click(); });
+
+  // vídeos dos cartões tocam só quando aparecem na tela
+  const vio = new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); }), { threshold: .25 });
+  document.querySelectorAll('.destaque-proj video').forEach(v => vio.observe(v));
 
   // entrada suave dos blocos ao rolar
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
