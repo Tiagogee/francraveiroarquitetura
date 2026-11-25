@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex"><!-- rascunho: tirar quando a Fran aprovar -->
 <title>Fran Craveiro · Arquitetura</title>
-<meta name="description" content="Arquiteta Francielen Craveiro. Casas e interiores pensados para serem sentidos, não apenas admirados.">
+<meta name="description" content="Arquiteta Francielen Craveiro, Criciúma (SC). Projetos residenciais, interiores, comerciais e casas de campo e de praia. Arquitetura para ser sentida, não apenas admirada.">
 <meta property="og:title" content="Fran Craveiro · Arquitetura">
-<meta property="og:description" content="Arquitetura para ser sentida, não apenas admirada.">
+<meta property="og:description" content="Cada história, uma essência. Cada essência, uma arquitetura.">
 <link rel="icon" href="img/arco.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,7 @@
   /* cores tiradas da identidade visual da Fran */
   :root{
     --creme:#EEE5D4;
+    --creme2:#F6F0E4;
     --salvia:#C8C590;
     --marrom:#54361A;
     --ferrugem:#7D3F0E;
@@ -25,64 +26,96 @@
     --arco:999px 999px 0 0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--creme);color:var(--marrom);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--creme);color:var(--marrom);font:400 17px/1.75 var(--sans);-webkit-font-smoothing:antialiased}
   a{color:inherit}
   img{display:block;max-width:100%}
   :focus-visible{outline:3px solid var(--ferrugem);outline-offset:3px}
   .wrap{width:min(1200px,100% - 48px);margin-inline:auto}
-  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+  .eyebrow::before{content:"";width:28px;height:1.5px;background:currentColor;opacity:.6}
   h1,h2,h3{font-family:var(--serif);font-weight:400;font-variation-settings:"opsz" 144}
-  h2{font-size:clamp(40px,5.6vw,76px);line-height:1;letter-spacing:-.015em}
+  h2{font-size:clamp(38px,5.2vw,70px);line-height:1.02;letter-spacing:-.015em}
+  h2 em,h1 em{font-style:italic}
   section{padding:120px 0}
+  .lead{font-family:var(--serif);font-size:clamp(22px,2.3vw,30px);line-height:1.4;font-weight:300}
 
   /* o arco da marca, pintado na cor que a seção pedir */
-  .marca-arco{display:inline-block;background:currentColor;-webkit-mask:url(img/arco.png) center/contain no-repeat;mask:url(img/arco.png) center/contain no-repeat}
+  .marca-arco{display:inline-block;background:currentColor;-webkit-mask:url(img/arco.png) center/contain no-repeat;mask:url(img/arco.png) center/contain no-repeat;aspect-ratio:309/195}
   .marca-logo{display:block;background:currentColor;-webkit-mask:url(img/logo.png) left center/contain no-repeat;mask:url(img/logo.png) left center/contain no-repeat;aspect-ratio:737/244}
 
+  /* botões: um formato só, ícone de WhatsApp quando abre conversa */
+  .botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.02em;border:1.5px solid transparent;transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
+  .botao:hover{transform:translateY(-2px)}
+  .botao svg{width:19px;height:19px;flex:none}
+  .b-ferrugem{background:var(--ferrugem);color:var(--creme);box-shadow:0 10px 24px -12px rgb(125 63 14 / .7)}
+  .b-ferrugem:hover{background:var(--marrom)}
+  .b-linha{border-color:currentColor}
+  .b-linha:hover{background:var(--marrom);border-color:var(--marrom);color:var(--creme)}
+  .b-creme{background:var(--creme);color:var(--marrom)}
+  .b-creme:hover{background:var(--salvia)}
+  .contato .b-linha:hover{background:var(--creme);border-color:var(--creme);color:var(--marrom)}
+
   /* topo */
-  .topo{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--creme) 92%,transparent);backdrop-filter:blur(8px)}
+  .topo{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--creme) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid rgb(84 54 26 / .08)}
   .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
   .topo .marca-logo{width:150px}
   .topo nav{display:flex;gap:30px;align-items:center;font-size:14px;font-weight:500}
   .topo nav a{text-decoration:none}
   .topo nav a:not(.botao):hover{color:var(--ferrugem)}
-
-  .botao{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;transition:background .25s,color .25s,transform .25s}
-  .botao:hover{transform:translateY(-2px)}
-  .b-ferrugem{background:var(--ferrugem);color:var(--creme)}
-  .b-ferrugem:hover{background:var(--marrom)}
-  .b-linha{border:1.5px solid currentColor}
-  .b-creme{background:var(--creme);color:var(--marrom)}
-  .b-creme:hover{background:var(--salvia)}
-  .topo .botao{padding:10px 20px;font-size:14px}
+  .topo .botao{min-height:42px;padding:0 20px;font-size:14px;box-shadow:none}
 
   /* abertura */
-  .abertura{padding:48px 0 0}
-  .abertura .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end}
-  .abertura h1{font-size:clamp(50px,6.6vw,98px);line-height:.98;letter-spacing:-.02em;margin:22px 0 28px}
-  .abertura h1 em{font-style:italic;color:var(--ferrugem)}
-  .abertura p{max-width:40ch;font-size:18px}
-  .abertura .botoes{display:flex;gap:12px;flex-wrap:wrap;margin:36px 0 64px}
+  .abertura{padding:56px 0 0}
+  .abertura .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:end}
+  .abertura h1{font-size:clamp(48px,6.4vw,94px);line-height:1;letter-spacing:-.02em;margin:24px 0 30px}
+  .abertura h1 em{color:var(--ferrugem)}
+  .abertura blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.9vw,25px);line-height:1.45;padding-left:22px;border-left:2px solid var(--ferrugem);max-width:30ch}
+  .abertura .botoes{display:flex;gap:12px;flex-wrap:wrap;margin:40px 0 72px}
   .portal{position:relative;aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;background:url(img/veio.webp) 0 0/auto 140% var(--salvia);animation:veio 60s linear infinite alternate}
-  .portal .marca-arco{position:absolute;left:50%;top:56%;width:46%;aspect-ratio:309/195;translate:-50% -50%;color:var(--creme);filter:drop-shadow(0 10px 24px rgb(84 54 26 / .35))}
+  .portal::after{content:"";position:absolute;inset:14px 14px 0;border:1.5px solid rgb(238 229 212 / .55);border-bottom:0;border-radius:var(--arco)}
+  .portal .marca-arco{position:absolute;left:50%;top:56%;width:46%;translate:-50% -50%;color:var(--creme);filter:drop-shadow(0 10px 24px rgb(84 54 26 / .35))}
   @keyframes veio{to{background-position:-700px 0}}
 
   /* faixa de arcos */
-  .faixa{background:var(--ferrugem);color:var(--salvia);overflow:hidden;padding:26px 0}
-  .faixa .trilho{display:flex;gap:56px;width:max-content;animation:anda 40s linear infinite}
-  .faixa .item{display:flex;align-items:center;gap:56px;font-family:var(--serif);font-style:italic;font-size:26px;white-space:nowrap}
-  .faixa .marca-arco{width:52px;aspect-ratio:309/195}
+  .faixa{background:var(--ferrugem);color:var(--salvia);overflow:hidden;padding:24px 0}
+  .faixa .trilho{display:flex;gap:52px;width:max-content;animation:anda 45s linear infinite}
+  .faixa .item{display:flex;align-items:center;gap:52px;font-family:var(--serif);font-style:italic;font-size:25px;white-space:nowrap}
+  .faixa .marca-arco{width:46px}
   @keyframes anda{to{transform:translateX(-50%)}}
+
+  /* missão */
+  .missao .wrap{display:grid;grid-template-columns:4fr 8fr;gap:72px;align-items:start}
+  .missao .lead{margin:0 0 26px;color:var(--marrom)}
+  .missao .lead strong{font-weight:400;font-style:italic;color:var(--ferrugem)}
+  .missao p.corpo{max-width:58ch}
+  .missao h2{position:sticky;top:110px}
+
+  /* natureza: os quatro elementos */
+  .natureza{background:var(--creme2)}
+  .natureza .topo-sec{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end;margin-bottom:64px}
+  .natureza .topo-sec p+p{margin-top:16px}
+  .elementos{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .elementos li{text-align:center}
+  .elementos .janela{aspect-ratio:3/4;border-radius:var(--arco);display:grid;place-items:center;color:var(--creme);position:relative;overflow:hidden}
+  .elementos .janela::after{content:"";position:absolute;inset:10px 10px 0;border:1.5px solid rgb(238 229 212 / .35);border-bottom:0;border-radius:var(--arco)}
+  .elementos svg{width:46%;height:auto;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .e-terra{background:var(--marrom)}
+  .e-agua{background:var(--oliva)}
+  .e-fogo{background:var(--ferrugem)}
+  .e-ar{background:var(--salvia);color:var(--marrom)!important}
+  .elementos h3{font-size:30px;margin-top:20px;line-height:1}
+  .elementos p{font-size:14px;margin-top:6px;opacity:.8}
 
   /* projetos */
   .cab{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px;flex-wrap:wrap}
   .cab p{max-width:38ch}
+  .cab h2{margin-top:14px}
   .grade{display:grid;grid-template-columns:repeat(6,1fr);gap:28px}
   .proj{grid-column:span 2}
   .proj:nth-child(1),.proj:nth-child(2){grid-column:span 3}
   .proj .foto{aspect-ratio:4/5;border-radius:var(--arco);overflow:hidden;position:relative;display:grid;place-items:center;color:var(--creme)}
-  .proj:nth-child(1) .foto,.proj:nth-child(2) .foto{aspect-ratio:5/5}
+  .proj:nth-child(1) .foto,.proj:nth-child(2) .foto{aspect-ratio:1/1}
   .proj .foto img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
   .proj:hover .foto img{transform:scale(1.04)}
   .proj .foto .aviso{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85;text-align:center;padding:0 20px}
@@ -97,69 +130,98 @@
   .retrato span{position:absolute;inset:auto 0 28px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--creme);text-shadow:0 1px 8px var(--marrom)}
   .sobre h2{margin:18px 0 28px}
   .sobre p{max-width:54ch;margin-bottom:18px;color:#efe8d8}
+  .sobre .destaque{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.4;color:var(--salvia);margin:28px 0}
   .sobre .reg{font-size:13px;letter-spacing:.08em;margin-top:28px;opacity:.85}
 
   /* serviços */
-  .servicos ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-  .servicos li{background:#f6f0e4;border-radius:28px;padding:36px 28px 32px;border:1.5px solid rgb(84 54 26 / .12)}
-  .servicos li .marca-arco{width:44px;aspect-ratio:309/195;color:var(--ferrugem);margin-bottom:26px}
+  .servicos ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .servicos li{background:var(--creme2);border-radius:28px;padding:40px 40px 36px;border:1.5px solid rgb(84 54 26 / .1);display:grid;grid-template-columns:auto 1fr;gap:6px 24px;transition:border-color .3s,transform .3s}
+  .servicos li:hover{border-color:rgb(125 63 14 / .45);transform:translateY(-3px)}
+  .servicos li .marca-arco{width:48px;color:var(--ferrugem);grid-row:span 2;margin-top:8px}
   .servicos li:nth-child(2) .marca-arco{color:var(--oliva)}
   .servicos li:nth-child(3) .marca-arco{color:var(--marrom)}
   .servicos li:nth-child(4) .marca-arco{color:#9a9662}
-  .servicos h3{font-size:26px;line-height:1.1;margin-bottom:10px}
-  .servicos li p{font-size:15px}
+  .servicos h3{font-size:28px;line-height:1.15}
+  .servicos li p{font-size:15.5px}
 
   /* como funciona: etapas em ordem real */
   .como{background:var(--salvia)}
-  .etapas{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:e}
+  .etapas{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:e}
   .etapas li{counter-increment:e;border-top:2px solid var(--marrom);padding-top:22px}
   .etapas li::before{content:counter(e);display:block;font-family:var(--serif);font-style:italic;font-size:56px;line-height:1;color:var(--ferrugem);margin-bottom:14px}
-  .etapas h3{font-size:24px;margin-bottom:8px}
-  .etapas p{font-size:15px}
+  .etapas h3{font-size:24px;margin-bottom:10px}
+  .etapas p{font-size:15px;line-height:1.7}
 
   /* contato */
   .contato{background:var(--marrom);color:var(--creme);padding-bottom:48px}
-  .contato h2{font-size:clamp(44px,7vw,104px);max-width:13ch;margin:20px 0 44px}
+  .contato .wrap>.grade-c{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end}
+  .contato h2{font-size:clamp(42px,6.2vw,92px);max-width:14ch;margin:20px 0 44px}
   .contato h2 em{color:var(--salvia)}
   .contato .botoes{display:flex;gap:12px;flex-wrap:wrap}
-  .contato .b-linha:hover{background:rgb(238 229 212 / .1)}
-  footer{margin-top:110px;padding-top:28px;border-top:1px solid rgb(238 229 212 / .2);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.9}
+  .dados{list-style:none;font-size:15px;display:grid;gap:18px;padding-bottom:6px}
+  .dados span{display:block;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--salvia);margin-bottom:2px}
+  .dados a{text-decoration:none;border-bottom:1px solid rgb(238 229 212 / .3)}
+  .dados a:hover{border-color:var(--salvia)}
+  footer{margin-top:100px;padding-top:28px;border-top:1px solid rgb(238 229 212 / .2);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.9}
   footer .marca-logo{width:190px;color:var(--creme)}
+
+  /* WhatsApp sempre à mão */
+  .zap{position:fixed;right:22px;bottom:22px;z-index:20;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--ferrugem);color:var(--creme);box-shadow:0 12px 28px -8px rgb(84 54 26 / .6);transition:transform .25s,background .25s}
+  .zap:hover{transform:scale(1.07);background:var(--marrom)}
+  .zap svg{width:28px;height:28px}
 
   /* rascunho: o que ainda falta vir da Fran */
   .falta{background:rgb(200 197 144 / .55);border-bottom:2px dashed var(--ferrugem);padding:0 4px}
   .sobre .falta,.contato .falta{background:rgb(238 229 212 / .18);border-color:var(--salvia)}
 
+  /* entrada suave ao rolar */
+  .rev{opacity:0;translate:0 26px;transition:opacity .9s ease,translate .9s ease}
+  .rev.on{opacity:1;translate:0 0}
+
   @media (max-width:960px){
-    .abertura .wrap,.sobre .wrap{grid-template-columns:1fr;gap:40px}
+    .abertura .wrap,.sobre .wrap,.missao .wrap,.natureza .topo-sec,.contato .wrap>.grade-c{grid-template-columns:1fr;gap:40px}
+    .missao h2{position:static}
     .portal{max-width:520px}
     .abertura .botoes{margin-bottom:0}
     .grade{grid-template-columns:1fr 1fr}
     .proj,.proj:nth-child(n){grid-column:span 1}
-    .servicos ul,.etapas{grid-template-columns:1fr 1fr}
+    .elementos,.etapas{grid-template-columns:1fr 1fr}
+    .servicos ul{grid-template-columns:1fr}
   }
   @media (max-width:640px){
     section{padding:80px 0}
     .topo nav a:not(.botao){display:none}
     .topo .marca-logo{width:120px}
-    .grade,.servicos ul,.etapas{grid-template-columns:1fr}
+    .grade,.etapas{grid-template-columns:1fr}
+    .elementos{gap:16px}
+    .elementos h3{font-size:24px}
+    .servicos li{padding:30px 24px;grid-template-columns:1fr}
+    .servicos li .marca-arco{grid-row:auto;margin:0 0 10px}
+    .botoes .botao{width:100%}
+    .zap{width:54px;height:54px;right:16px;bottom:16px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
     html{scroll-behavior:auto}
+    .rev{opacity:1;translate:none}
   }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></symbol>
+</svg>
+
 <header class="topo">
   <div class="wrap">
     <a href="#" aria-label="Fran Craveiro Arquitetura, início"><span class="marca-logo"></span></a>
     <nav aria-label="Seções">
+      <a href="#essencia">Essência</a>
       <a href="#projetos">Projetos</a>
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
-      <a class="botao b-ferrugem" href="#contato">Falar com a Fran</a>
+      <a class="botao b-ferrugem" href="#contato">Fale comigo</a>
     </nav>
   </div>
 </header>
@@ -170,9 +232,9 @@
       <div>
         <span class="eyebrow">Arquiteta Francielen Craveiro</span>
         <h1>Arquitetura para ser <em>sentida</em>, não apenas admirada.</h1>
-        <p>Casas de campo, casas de condomínio e interiores com madeira, pedra e luz quente. Cada projeto começa pelo jeito de viver de quem vai morar nele.</p>
+        <blockquote>“Cada história, uma essência. Cada essência, uma arquitetura.”</blockquote>
         <div class="botoes">
-          <a class="botao b-ferrugem" href="#contato">Quero conversar sobre a minha casa</a>
+          <a class="botao b-ferrugem" href="https://wa.me/5548991331400?text=Ol%C3%A1%2C%20Fran!%20Vi%20seu%20site%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-zap"/></svg>Agendar uma conversa</a>
           <a class="botao b-linha" href="#projetos">Ver projetos</a>
         </div>
       </div>
@@ -182,41 +244,70 @@
 
   <div class="faixa" aria-hidden="true">
     <div class="trilho">
-      <div class="item"><span class="marca-arco"></span>casas de campo<span class="marca-arco"></span>arquitetura em meio à natureza<span class="marca-arco"></span>interiores<span class="marca-arco"></span>madeira, pedra e luz</div>
-      <div class="item"><span class="marca-arco"></span>casas de campo<span class="marca-arco"></span>arquitetura em meio à natureza<span class="marca-arco"></span>interiores<span class="marca-arco"></span>madeira, pedra e luz</div>
+      <div class="item"><span class="marca-arco"></span>cada história, uma essência<span class="marca-arco"></span>terra · água · fogo · ar<span class="marca-arco"></span>casas de campo e de praia<span class="marca-arco"></span>interiores</div>
+      <div class="item"><span class="marca-arco"></span>cada história, uma essência<span class="marca-arco"></span>terra · água · fogo · ar<span class="marca-arco"></span>casas de campo e de praia<span class="marca-arco"></span>interiores</div>
     </div>
   </div>
+
+  <section id="essencia" class="missao" aria-labelledby="t-missao">
+    <div class="wrap">
+      <div><span class="eyebrow">Missão</span><h2 id="t-missao" style="margin-top:14px">A linha que sigo é a da sua <em>história</em>.</h2></div>
+      <div class="rev">
+        <p class="lead">Criar lugares que se conectem com a história de cada cliente, tornando <strong>único</strong> cada projeto. A linha que sigo é a da sua história, e é ela que me dá liberdade para explorar diferentes caminhos na arquitetura.</p>
+        <p class="corpo">A partir dessa leitura, uno a sua história à essência em que acredito: uma arquitetura que acolhe, aproxima a natureza do dia a dia e transforma a forma como a gente se sente em um lugar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="natureza" aria-labelledby="t-nat">
+    <div class="wrap">
+      <div class="topo-sec">
+        <div><span class="eyebrow">O diferencial</span><h2 id="t-nat" style="margin-top:14px">A arquitetura acolhe. A natureza <em>conecta</em>.</h2></div>
+        <div>
+          <p>Acredito que o contato com a natureza transforma a maneira como nos sentimos em um espaço. Por isso, desde a primeira conversa, penso em como os quatro elementos da natureza podem estar presentes em cada projeto.</p>
+          <p>Essa presença pode ser sutil. A forma de incorporar cada elemento nasce da história de cada cliente e da sensação que queremos despertar naquele lugar.</p>
+        </div>
+      </div>
+      <ul class="elementos">
+        <li class="rev"><div class="janela e-terra"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 50 24 24l9 12 7-9 18 23Z"/><path d="M6 50h52"/><path d="M14 56h36"/><circle cx="46" cy="16" r="4"/></svg></div><h3>Terra</h3><p>na textura da pedra</p></li>
+        <li class="rev"><div class="janela e-agua"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8c8 11 14 19 14 27a14 14 0 0 1-28 0c0-8 6-16 14-27Z"/><path d="M8 54c4-3 8-3 12 0s8 3 12 0 8-3 12 0 8 3 12 0"/></svg></div><h3>Água</h3><p>no som da água</p></li>
+        <li class="rev"><div class="janela e-fogo"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8c3 9 13 14 13 26a13 13 0 0 1-26 0c0-6 3-10 6-13 0 5 2 8 5 9-2-8 0-15 2-22Z"/><path d="M14 54h36"/><path d="M20 58h24"/></svg></div><h3>Fogo</h3><p>no calor de uma lareira</p></li>
+        <li class="rev"><div class="janela e-ar"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 24h32a7 7 0 1 0-7-7"/><path d="M8 34h44a7 7 0 1 1-7 7"/><path d="M8 44h22"/></svg></div><h3>Ar</h3><p>na brisa que atravessa o ambiente</p></li>
+      </ul>
+    </div>
+  </section>
 
   <section id="projetos" aria-labelledby="t-proj">
     <div class="wrap">
       <div class="cab">
         <div><span class="eyebrow">Portfólio</span><h2 id="t-proj">Projetos</h2></div>
-        <p>Uma seleção do escritório. As fotos entram assim que a Fran separar as versões em alta.</p>
+        <p>Uma seleção do escritório, de casas a espaços comerciais.</p>
       </div>
       <div class="grade">
-        <article class="proj"><div class="foto c1"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Casa de campo</h3><p>Telhado inclinado, pedra e madeira · <span class="falta">cidade · ano</span></p></article>
-        <article class="proj"><div class="foto c2"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Casa no condomínio</h3><p>Linhas modernas · <span class="falta">cidade · ano</span></p></article>
-        <article class="proj"><div class="foto c3"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Cozinha retrô</h3><p>Interiores · <span class="falta">cidade · ano</span></p></article>
-        <article class="proj"><div class="foto c4"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Ventos</h3><p><span class="falta">tipo de projeto · cidade · ano</span></p></article>
-        <article class="proj"><div class="foto c5"><span class="aviso">foto em alta vem da Fran</span></div>
-          <h3>Academia do Kado</h3><p>Comercial · <span class="falta">cidade · ano</span></p></article>
+        <article class="proj rev"><div class="foto c1"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Casa de campo</h3><p>Telhado inclinado, pedra e madeira</p></article>
+        <article class="proj rev"><div class="foto c2"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Casa no condomínio</h3><p>Linhas modernas</p></article>
+        <article class="proj rev"><div class="foto c3"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Cozinha retrô</h3><p>Interiores</p></article>
+        <article class="proj rev"><div class="foto c4"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Ventos</h3><p><span class="falta">tipo de projeto</span></p></article>
+        <article class="proj rev"><div class="foto c5"><span class="aviso">foto em alta vem da Fran</span></div>
+          <h3>Academia do Kado</h3><p>Comercial</p></article>
       </div>
     </div>
   </section>
 
   <section id="sobre" class="sobre" aria-labelledby="t-sobre">
     <div class="wrap">
-      <div class="retrato"><span>retrato da Fran</span></div>
+      <div class="retrato rev"><span>retrato da Fran</span></div>
       <div>
-        <span class="eyebrow">Quem desenha</span>
+        <span class="eyebrow">Profissional</span>
         <h2 id="t-sobre">Prazer, Fran.</h2>
-        <p><span class="falta">Bio dela em 3 a 5 linhas: formação, há quanto tempo projeta, o que a move. Este texto é provisório.</span></p>
-        <p>Ela trabalha com madeira, pedra, vidro e muita vegetação, e trata a paisagem como parte do projeto. Por isso cada casa começa no terreno, não na prancheta.</p>
-        <p class="reg">Arquiteta e urbanista · <span class="falta">CAU A000000-0</span> · <span class="falta">cidade, SC</span></p>
+        <p>Sou Arquiteta e Urbanista formada desde 2014. Em 2024, concluí minha especialização em Arquitetura Modular.</p>
+        <p class="destaque">Acredito que a arquitetura tem o poder de mudar a forma como a gente se sente em um lugar. E, ao mudar o que a gente sente, ela também transforma a gente.</p>
+        <p>Pra mim, pertencimento é sentir que aquele lugar tem a ver com você. É com esse olhar que acolho cada história que chega até mim. Gosto de ter a liberdade de interpretar cada uma com cuidado e sensibilidade e, a partir dela, criar uma arquitetura única e autêntica.</p>
+        <p class="reg">Arquiteta e Urbanista · CAU A112795-0 · Criciúma, SC</p>
       </div>
     </div>
   </section>
@@ -224,45 +315,61 @@
   <section id="servicos" class="servicos" aria-labelledby="t-serv">
     <div class="wrap">
       <div class="cab">
-        <div><span class="eyebrow">O que ela faz</span><h2 id="t-serv">Serviços</h2></div>
-        <p class="falta">Lista a confirmar com a Fran.</p>
+        <div><span class="eyebrow">Serviços</span><h2 id="t-serv">Da primeira conversa à <em>entrega das chaves</em>.</h2></div>
       </div>
       <ul>
-        <li><span class="marca-arco"></span><h3>Casa de campo</h3><p>Casas em meio à natureza, com materiais naturais e grandes aberturas para a vista.</p></li>
-        <li><span class="marca-arco"></span><h3>Projeto residencial</h3><p>Da primeira conversa ao projeto aprovado na prefeitura, com o detalhamento para a obra.</p></li>
-        <li><span class="marca-arco"></span><h3>Interiores</h3><p>Marcenaria, iluminação e materiais escolhidos junto com o projeto, não depois dele.</p></li>
-        <li><span class="marca-arco"></span><h3>Comercial</h3><p>Lojas, academias e escritórios com a cara de quem atende neles.</p></li>
+        <li class="rev"><span class="marca-arco"></span><h3>Projeto residencial</h3><p>Da primeira conversa à entrega das chaves, acompanho cada etapa. Desenvolvo o projeto, conduzo o processo de aprovação na prefeitura, preparo o detalhamento para a execução e acompanho a obra até a entrega.</p></li>
+        <li class="rev"><span class="marca-arco"></span><h3>Projeto de interiores</h3><p>Desenvolvo o projeto de interiores com marcenaria sob medida, iluminação e seleção de materiais e acabamentos. Entrego o detalhamento de cada elemento e acompanho a execução até a conclusão da obra.</p></li>
+        <li class="rev"><span class="marca-arco"></span><h3>Projeto comercial</h3><p>Desenvolvo projetos para lojas, academias, escritórios e outros espaços comerciais, com atenção à identidade de cada negócio, à rotina da equipe e à experiência de quem chega.</p></li>
+        <li class="rev"><span class="marca-arco"></span><h3>Casas de campo e de praia</h3><p>Projeto casas que se abrem para a paisagem, entre o verde do campo e a brisa do mar. Uma arquitetura pensada para sentir a natureza de perto, dentro e fora de casa.</p></li>
       </ul>
     </div>
   </section>
 
   <section class="como" aria-labelledby="t-como">
     <div class="wrap">
-      <div class="cab"><div><span class="eyebrow">Do terreno à chave</span><h2 id="t-como">Como funciona</h2></div></div>
+      <div class="cab"><div><span class="eyebrow">Como funciona</span><h2 id="t-como">Do terreno à chave</h2></div></div>
       <ol class="etapas">
-        <li><h3>Conversa</h3><p>Você conta como vive, o que precisa e quanto quer investir.</p></li>
-        <li><h3>Visita ao terreno</h3><p>Sol, vento, vista e vizinhança entram no desenho desde o início.</p></li>
-        <li><h3>Estudo e projeto</h3><p>Primeiro o estudo, depois o projeto completo, com cada ajuste conversado.</p></li>
-        <li><h3>Obra</h3><p>Projeto detalhado para a obra e acompanhamento quando você quiser.</p></li>
+        <li class="rev"><h3>Conversa</h3><p>Você me conta sua história, como vive, o que precisa, como quer se sentir no espaço e quanto quer investir. Eu escuto com atenção e interpreto com sensibilidade, para que tudo isso ganhe forma na arquitetura.</p></li>
+        <li class="rev"><h3>Terreno</h3><p>Gosto de caminhar pelo terreno, sentir a atmosfera do lugar e observar o sol, o vento, a paisagem, o perfil do terreno e a vizinhança. É nessa visita que começo a imaginar como a arquitetura pode se encaixar ali com naturalidade e que sensação quero despertar.</p></li>
+        <li class="rev"><h3>Estudo e projeto</h3><p>Começo pelo estudo, em que te apresento as primeiras ideias para o espaço. Conversamos sobre cada ajuste e, com as escolhas alinhadas, desenvolvo o projeto completo.</p></li>
+        <li class="rev"><h3>Obra</h3><p>Entrego o projeto com os detalhes necessários para que a obra seja bem executada. Também ofereço acompanhamento para esclarecer dúvidas da equipe e ajudar nas decisões que surgem à medida que o espaço ganha forma.</p></li>
       </ol>
     </div>
   </section>
 
   <section id="contato" class="contato" aria-labelledby="t-cont">
     <div class="wrap">
-      <span class="eyebrow">Contato</span>
-      <h2 id="t-cont">Vamos desenhar a sua <em>casa</em>?</h2>
-      <div class="botoes">
-        <a class="botao b-creme" href="https://wa.me/5548000000000" rel="noopener">Chamar no WhatsApp <span class="falta">(número)</span></a>
-        <a class="botao b-linha" href="https://www.instagram.com/francraveiroarquitetura/" rel="noopener">@francraveiroarquitetura</a>
-        <a class="botao b-linha" href="mailto:contato@francraveiroarquitetura.com.br">contato@francraveiroarquitetura.com.br</a>
+      <div class="grade-c">
+        <div>
+          <span class="eyebrow">Contato</span>
+          <h2 id="t-cont">Vamos criar algo <em>incrível</em> juntos?</h2>
+          <div class="botoes">
+            <a class="botao b-creme" href="https://wa.me/5548991331400?text=Ol%C3%A1%2C%20Fran!%20Vi%20seu%20site%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-zap"/></svg>Chamar no WhatsApp</a>
+            <a class="botao b-linha" href="https://www.instagram.com/francraveiroarquitetura/" target="_blank" rel="noopener">Ver o Instagram</a>
+          </div>
+        </div>
+        <ul class="dados">
+          <li><span>WhatsApp</span><a href="https://wa.me/5548991331400" target="_blank" rel="noopener">(48) 99133-1400</a></li>
+          <li><span>E-mail</span><a href="mailto:arquiteturafrancraveiro@gmail.com">arquiteturafrancraveiro@gmail.com</a></li>
+          <li><span>Instagram</span><a href="https://www.instagram.com/francraveiroarquitetura/" target="_blank" rel="noopener">@francraveiroarquitetura</a></li>
+          <li><span>Escritório</span><a href="https://www.google.com/maps/search/?api=1&query=Rua+Herc%C3%ADlio+Luz%2C+125%2C+Centro%2C+Crici%C3%BAma+SC" target="_blank" rel="noopener">Rua Hercílio Luz, 125, Sala 01<br>Centro, Criciúma | SC</a></li>
+        </ul>
       </div>
       <footer>
         <span class="marca-logo" role="img" aria-label="Fran Craveiro Arquitetura"></span>
-        <span>Francielen Craveiro · Arquiteta e Urbanista · <span class="falta">CAU A000000-0</span></span>
+        <span>Francielen Craveiro · Arquiteta e Urbanista · CAU A112795-0</span>
       </footer>
     </div>
   </section>
 </main>
+
+<a class="zap" href="https://wa.me/5548991331400?text=Ol%C3%A1%2C%20Fran!%20Vi%20seu%20site%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" aria-label="Conversar com a Fran no WhatsApp"><svg aria-hidden="true"><use href="#i-zap"/></svg></a>
+
+<script>
+  // entrada suave dos blocos ao rolar
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.rev').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 90 + 'ms'; io.observe(el); });
+</script>
 </body>
 </html>
